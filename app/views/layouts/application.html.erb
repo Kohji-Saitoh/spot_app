@@ -10,8 +10,6 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <header>
       <div class='header-logo'>
         <%= link_to('トップページ', '/') %>
@@ -54,6 +52,8 @@
           <p>こんにちは、ゲストさん！</p>
         <% end %>
       </div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
     </main>
     <%= yield %>
   </body>
