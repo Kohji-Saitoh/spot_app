@@ -12,6 +12,49 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <header>
+      <div class='header-logo'>
+        <%= link_to('トップページ', '/') %>
+      </div>
+      <div class='header-menu'>
+        <%- if current_user %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %><br />
+
+        <%- else %>
+          <%- if controller_name != 'sessions' %>
+              <%= link_to "ログイン", new_session_path(resource_name) %><br />
+          <% end %>
+
+          <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+              <%= link_to "アカウント登録", new_registration_path(resource_name) %><br />
+          <% end %>
+
+        <%- end %>
+        
+        <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+          <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+        <% end %>
+
+        <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+          <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+        <% end %>
+
+        <%- if devise_mapping.omniauthable? %>
+          <%- resource_class.omniauth_providers.each do |provider| %>
+            <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false } %><br />
+          <% end %>
+        <% end %>
+      </div>
+    </header>
+    <main>
+      <div class='greeting'>
+        <% if current_user.present? %>
+          <p>こんにちは、<%= current_user.name %>さん！</p>
+            <% else %>
+          <p>こんにちは、ゲストさん！</p>
+        <% end %>
+      </div>
+    </main>
     <%= yield %>
   </body>
 </html>
