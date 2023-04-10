@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
    }
   
+  get '/spots', to: 'spots#index'
+  get '/spots/new', to: 'spots#new'
+  post '/spots', to: 'spots#create'
   root 'spots#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get  '/users' => redirect('/')

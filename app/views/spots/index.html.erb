@@ -1,2 +1,31 @@
-<h1>Spots#index</h1>
-<p>Find me in app/views/spots/index.html.erb</p>
+<!--検索フォーム-->
+<h1 class='form-heading'>検索する</h1>
+<%= search_form_for @q do |f| %>
+    <%= f.label :'スポット：' %>
+    <%= f.search_field :name_cont, placeholder: 'キーワードを入力してください' %>
+    <%= f.submit '検索' %>
+    <br>
+
+    <%= f.label :'テキスト：' %>
+    <%= f.search_field :content_cont, placeholder: 'キーワードを入力してください' %>
+    <%= f.submit '検索' %>
+    <br>
+
+    <%= f.label :region_id, '都道府県：' %>
+    <%= f.collection_select :region_id_eq, Region.all, :id, :name %>
+    <%= f.submit '検索' %>
+<% end %>
+ 
+    <!--検索結果-->
+<% if @q.conditions.present? && @spots.present? %>
+    <!--検索がヒットした場合-->
+    <% @spots.each do |spot| %>
+        <%= spot.name %>
+        <%= spot.content %>
+        <%= spot.region.name %>
+        <br>
+    <% end %>
+<% else %>
+    <!--検索がヒットしなかった場合-->
+    <p>検索結果はありません</p>
+<% end %>
