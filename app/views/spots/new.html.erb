@@ -1,0 +1,30 @@
+<div class='main spots-new'>
+  <div class='container'>
+    <h1 class='form-heading'>投稿する</h1>
+    <%= form_with model: @spot, local: true do |f| %>
+      <div class='form'>
+        <div class='form-body'>
+          <div class='form-spot'>
+          <%= f.label :'スポット：' %>
+          <%= f.text_field :name, placeholder: 'キーワードを入力してください' %>
+          <br>
+          </div>
+
+          <div class='form-txt'>
+          <%= f.label :'テキスト：' %>
+          <%= f.text_field :content, placeholder: 'キーワードを入力してください' %>
+          <br>
+          </div>
+
+          <div class='form-region'>
+          <%= f.label :region_id, '都道府県：' %>
+          <%= f.collection_select :region_id, Region.all, :id, :name %>
+          <br>
+          </div>
+
+          <%= f.submit '投稿' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
