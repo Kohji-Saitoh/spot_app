@@ -58,3 +58,5 @@ gem 'devise'
 gem 'devise-i18n'
 
 gem 'ransack'
+
+gem 'active_hash'
