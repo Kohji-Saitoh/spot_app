@@ -1,4 +1,5 @@
 class SpotsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :search
 
   def search
@@ -28,6 +29,6 @@ class SpotsController < ApplicationController
 
   private
   def spots_params
-    params.require(:spot).permit(:name, :content, :region_id)
+    params.require(:spot).permit(:name, :content, :region_id).merge(user_id: current_user.id)
   end
 end
