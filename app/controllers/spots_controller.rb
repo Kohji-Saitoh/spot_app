@@ -27,6 +27,10 @@ class SpotsController < ApplicationController
       end
   end
 
+  def show
+    @spot = Spot.find_by(id: params[:id])
+  end
+
   private
   def spots_params
     params.require(:spot).permit(:name, :content, :region_id).merge(user_id: current_user.id)

@@ -1,0 +1,21 @@
+<%= @spot.name %>
+<%= @spot.content %>
+<%= @spot.region.name %>
+
+<% if user_signed_in? %>
+    <% if current_user.liked?(@spot) %>
+        <%= link_to spot_likes_path(@spot), method: :delete do %>
+            <span class="fa fa-heart liked-btn"></span>
+            <span class="like__count"><%= @spot.likes.count %></span>
+        <% end %>
+    <% else %>
+        <%= link_to spot_likes_path(@spot), method: :post do %>
+            <span class="fa fa-heart-o unliked-btn"></span>
+            <span class="like__count"><%= @spot.likes.count %></span>
+        <% end %>
+    <% end %>
+
+<% else %>
+    <span class="fa fa-heart-o liked-btn"></span>
+    <span class="like__count"><%= @spot.likes.count %></span>
+<% end %>
