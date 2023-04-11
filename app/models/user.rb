@@ -4,4 +4,8 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def liked?(spot)
+    self.likes.exists?(spot_id: spot.id)
+  end
 end
