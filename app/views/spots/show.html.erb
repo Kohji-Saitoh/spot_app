@@ -19,3 +19,14 @@
     <span class="fa fa-heart-o liked-btn"></span>
     <span class="like__count"><%= @spot.likes.count %></span>
 <% end %>
+
+<br><br>コメント<br>
+<% @comments.each do |comment| %>
+  ・<%= comment.content %><br>
+<% end %>
+
+<%= form_with model: [@spot, @comment], local: true do |f| %>
+  <%= f.text_area :content %>
+  <%= f.hidden_field :post_id, value: @spot.id %><br>
+  <%= f.submit 'コメントする' %>
+<% end %>

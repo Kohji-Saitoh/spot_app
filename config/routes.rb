@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   resources :spots do               #こちらの２行を追加
     resource :likes, only: [:create, :destroy]
   end
+
+  resources :spots do               #こちらの２行を追加
+    resource :comments, only: [:create]
+  end
 end
