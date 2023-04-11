@@ -21,7 +21,7 @@
     <!--検索がヒットした場合-->
     <br>
     <% @spots.each do |spot| %>
-        <%= spot.name %>
+        <%= link_to spot.name, "/spots/#{spot.id}" %>
         <%= spot.content %>
         <%= spot.region.name %>
 
