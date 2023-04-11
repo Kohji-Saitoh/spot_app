@@ -4,6 +4,7 @@ class Spot < ApplicationRecord
   belongs_to :user
   belongs_to :region
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   validates :name, presence: true
   validates :content, presence: true
