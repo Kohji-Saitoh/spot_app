@@ -19,6 +19,7 @@
     <!--検索結果-->
 <% if @q.conditions.present? && @spots.present? %>
     <!--検索がヒットした場合-->
+    <br>
     <% @spots.each do |spot| %>
         <%= spot.name %>
         <%= spot.content %>
@@ -34,15 +35,15 @@
                 <%= link_to spot_likes_path(spot), method: :post do %>
                     <span class="fa fa-heart-o unliked-btn"></span>
                     <span class="like__count"><%= spot.likes.count %></span>
+               <% end %>
             <% end %>
+        <% else %>
+            <span class="fa fa-heart-o liked-btn"></span>
+            <span class="like__count"><%= spot.likes.count %></span>
         <% end %>
-
-    <% else %>
-        <span class="fa fa-heart-o liked-btn"></span>
-        <span class="like__count"><%= spot.likes.count %></span>
+        <br>
     <% end %>
-            <br>
-        <% end %>
+    <br>
 <% else %>
     <!--検索がヒットしなかった場合-->
     <p>検索結果はありません</p>
