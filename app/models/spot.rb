@@ -9,4 +9,6 @@ class Spot < ApplicationRecord
   validates :name, presence: true
   validates :content, presence: true
   validates :region_id, presence: true, numericality: {greater_than: 1}
+
+  mount_uploader :image, ImageUploader
 end
