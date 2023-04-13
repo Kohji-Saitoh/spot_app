@@ -25,7 +25,8 @@
 
 <br><br>コメント<br>
 <% @comments.each do |comment| %>
-  ・<%= comment.content %>(<%= comment.user.name %>さん)<br>
+  ・<%= comment.content %>
+  (<%= comment.user.name %>さん)<br>
 <% end %>
 
 <% if user_signed_in? %>
