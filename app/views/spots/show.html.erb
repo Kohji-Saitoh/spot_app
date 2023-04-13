@@ -28,10 +28,12 @@
   ・<%= comment.content %><br>
 <% end %>
 
-<%= form_with model: [@spot, @comment], local: true do |f| %>
-  <%= f.text_area :content %>
-  <%= f.hidden_field :post_id, value: @spot.id %><br>
-  <%= f.submit 'コメントする' %>
+<% if user_signed_in? %>
+  <%= form_with model: [@spot, @comment], local: true do |f| %>
+    <%= f.text_area :content %>
+    <%= f.hidden_field :post_id, value: @spot.id %><br>
+    <%= f.submit 'コメントする' %>
+  <% end %>
 <% end %>
 
 <br><%= link_to 'スポットを検索する', '/' %>

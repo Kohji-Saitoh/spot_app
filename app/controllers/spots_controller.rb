@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, only: [:new, :create]
   before_action :search
 
   def search
@@ -30,7 +30,9 @@ class SpotsController < ApplicationController
   def show
     @spot = Spot.find_by(id: params[:id])
     @comments = @spot.comments
-    @comment = current_user.comments.new
+    if user_signed_in?
+      @comment = current_user.comments.new
+    end
   end
 
   private
