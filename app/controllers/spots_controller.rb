@@ -21,7 +21,7 @@ class SpotsController < ApplicationController
       @spot = Spot.new(spots_params)
       if @spot.save
           flash[:notice] = 'スポット登録が完了しました'
-          redirect_to root_path
+          redirect_to "/spots/#{@spot.id}"
       else
           render('spots/new')
       end
@@ -35,6 +35,6 @@ class SpotsController < ApplicationController
 
   private
   def spots_params
-    params.require(:spot).permit(:name, :content, :region_id).merge(user_id: current_user.id)
+    params.require(:spot).permit(:name, :content, :region_id, :image).merge(user_id: current_user.id)
   end
 end
