@@ -1,54 +1,72 @@
-<!--検索フォーム-->
 <h1 class='form-heading'>検索する</h1>
-<%= search_form_for @q do |f| %>
-    <%= f.label :'スポット：' %>
-    <%= f.search_field :name_cont, placeholder: 'キーワードを入力してください' %>
-    <%= f.submit '検索' %>
-    <br>
+  <div class='form'>
+    <%= search_form_for @q do |f| %>
+      <div class='form-content'>
+        <%= f.label :'スポット：' %>
+        <%= f.search_field :name_cont, placeholder: 'キーワードを入力してください' %>
+        <%= f.submit '検索' %>
+        <br>
+      </div>
 
-    <%= f.label :'テキスト：' %>
-    <%= f.search_field :content_cont, placeholder: 'キーワードを入力してください' %>
-    <%= f.submit '検索' %>
-    <br>
+      <div class='form-content'>
+        <%= f.label :'テキスト：' %>
+        <%= f.search_field :content_cont, placeholder: 'キーワードを入力してください' %>
+        <%= f.submit '検索' %>
+        <br>
+      </div>
 
-    <%= f.label :region_id, '都道府県：' %>
-    <%= f.collection_select :region_id_eq, Region.all, :id, :name %>
-    <%= f.submit '検索' %>
-<% end %>
+      <div class='form-pulldown'>
+        <%= f.label :region_id, '都道府県：' %>
+        <%= f.collection_select :region_id_eq, Region.all, :id, :name %>
+        <%= f.submit '検索' %>
+      </div>
+    <% end %>
+  </div>
  
-    <!--検索結果-->
-<% if @q.conditions.present? && @spots.present? %>
-    <!--検索がヒットした場合-->
+<div class='result'>
+  <% if @q.conditions.present? && @spots.present? %>
     <br>
     <% @spots.each do |spot| %>
+      <div class='spot-name'>
         <%= link_to spot.name, "/spots/#{spot.id}" %>
-        <%= spot.content %>
-        <%= spot.region.name %>
+      </div>
 
+      <div class='spot-region'>
+        <%= spot.region.name %>
+      </div>
+      
+      <div class='spot-content'>
+        <%= spot.content %>
+      </div>
+
+      <div class='like-btn'>
         <% if user_signed_in? %>
-            <% if current_user.liked?(spot) %>
-                <%= link_to spot_likes_path(spot), method: :delete do %>
-                    <span class="fa fa-heart liked-btn"></span>
-                    <span class="like__count"><%= spot.likes.count %></span>
-                <% end %>
-            <% else %>
-                <%= link_to spot_likes_path(spot), method: :post do %>
-                    <span class="fa fa-heart-o unliked-btn"></span>
-                    <span class="like__count"><%= spot.likes.count %></span>
-               <% end %>
+          <% if current_user.liked?(spot) %>
+            <%= link_to spot_likes_path(spot), method: :delete do %>
+              <span class="fa fa-heart liked-btn"></span>
+              <span class="like__count"><%= spot.likes.count %></span>
             <% end %>
+          <% else %>
+            <%= link_to spot_likes_path(spot), method: :post do %>
+              <span class="fa fa-heart-o unliked-btn"></span>
+              <span class="like__count"><%= spot.likes.count %></span>
+            <% end %>
+          <% end %>
         <% else %>
-            <span class="fa fa-heart-o liked-btn"></span>
-            <span class="like__count"><%= spot.likes.count %></span>
+          <span class="fa fa-heart-o liked-btn"></span>
+          <span class="like__count"><%= spot.likes.count %></span>
         <% end %>
-        <br>
+        <br><br>
+      </div>
     <% end %>
     <br>
-<% else %>
-    <!--検索がヒットしなかった場合-->
-    <p>検索結果はありません</p>
-<% end %>
+  <%else %>
+    <p class='no-result'>検索結果はありません</p>
+  <% end %>
+</div>
 
-<%if user_signed_in? %>
-  <%= link_to 'スポットを投稿する', '/spots/new' %>
-<% end %>
+<div class='linkbox'>
+  <%if user_signed_in? %>
+    <%= link_to 'スポットを投稿する', '/spots/new' %>
+  <% end %>
+</div>

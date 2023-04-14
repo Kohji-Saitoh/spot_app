@@ -3,37 +3,33 @@
     <h1 class='form-heading'>投稿する</h1>
     <%= form_with model: @spot, local: true do |f| %>
       <div class='form'>
-        <div class='form-body'>
-          <div class='form-spot'>
+        <div class='form-content'>
           <%= f.label :'スポット：' %>
-          <%= f.text_field :name, placeholder: 'キーワードを入力してください' %>
-          <br>
-          </div>
+          <%= f.text_field :name, placeholder: 'キーワードを入力してください' %><br>
+        </div>
 
-          <div class='form-txt'>
+        <div class='form-content'>
           <%= f.label :'テキスト：' %>
-          <%= f.text_field :content, placeholder: 'キーワードを入力してください' %>
-          <br>
-          </div>
+          <%= f.text_field :content, placeholder: 'キーワードを入力してください' %><br>
+        </div>
 
-          <div class='form-region'>
+        <div class='form-pulldown'>
           <%= f.label :region_id, '都道府県：' %>
-          <%= f.collection_select :region_id, Region.all, :id, :name %>
-          <br>
-          </div>
+          <%= f.collection_select :region_id, Region.all, :id, :name %><br>
+        </div>
 
-          <div class='form-image'>
+        <div class='form-image'>
           <%= f.label :'写真：' %>
           <%= f.file_field :image %>
-          <%= f.hidden_field :image_cache %>
-          <br>
-          </div>
+          <%= f.hidden_field :image_cache %><br>
+        </div>
 
+        <div class='form-btn'>
           <%= f.submit '投稿' %>
         </div>
       </div>
     <% end %>
-    <div class='link-new'>
+    <div class='linkbox'>
       <br><%= link_to 'スポットを検索する', '/' %>
     </div>
   </div>

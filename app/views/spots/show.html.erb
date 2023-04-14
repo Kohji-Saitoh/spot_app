@@ -1,41 +1,74 @@
-<% unless @spot.image.url == nil %>
-  <%= image_tag @spot.image.thumb.url %><br>
-<% end %>
-<%= @spot.name %>
-<%= @spot.content %>
-<%= @spot.region.name %>
-
-<% if user_signed_in? %>
-    <% if current_user.liked?(@spot) %>
-        <%= link_to spot_likes_path(@spot), method: :delete do %>
-            <span class="fa fa-heart liked-btn"></span>
-            <span class="like__count"><%= @spot.likes.count %></span>
-        <% end %>
-    <% else %>
-        <%= link_to spot_likes_path(@spot), method: :post do %>
-            <span class="fa fa-heart-o unliked-btn"></span>
-            <span class="like__count"><%= @spot.likes.count %></span>
-        <% end %>
+<div class='spot'>
+  <div class='spot-image'>
+    <% unless @spot.image.url == nil %>
+      <%= image_tag @spot.image.thumb.url %><br>
     <% end %>
+  </div>
 
-<% else %>
-    <span class="fa fa-heart-o liked-btn"></span>
-    <span class="like__count"><%= @spot.likes.count %></span>
-<% end %>
+  <div class='spot-name'>
+    <%= @spot.name %>
+  </div>
 
-<br><br>コメント<br>
-<% @comments.each do |comment| %>
-  ・<%= comment.content %>
-  (<%= comment.user.name %>さん)<br>
-<% end %>
+  <div class='spot-region'>
+    <%= @spot.region.name %>
+  </div>
 
-<% if user_signed_in? %>
-  <%= form_with model: [@spot, @comment], local: true do |f| %>
-    <%= f.text_area :content %>
-    <%= f.hidden_field :post_id, value: @spot.id %><br>
-    <%= f.submit 'コメントする' %>
+  <div class='spot-content'>
+    <%= @spot.content %>
+  </div>
+
+  <div class='like-btn'>
+    <% if user_signed_in? %>
+      <% if current_user.liked?(@spot) %>
+        <%= link_to spot_likes_path(@spot), method: :delete do %>
+          <span class="fa fa-heart liked-btn"></span>
+          <span class="like__count"><%= @spot.likes.count %></span>
+        <% end %>
+      <% else %>
+        <%= link_to spot_likes_path(@spot), method: :post do %>
+          <span class="fa fa-heart-o unliked-btn"></span>
+          <span class="like__count"><%= @spot.likes.count %></span>
+        <% end %>
+      <% end %>
+    <% else %>
+      <span class="fa fa-heart-o liked-btn"></span>
+      <span class="like__count"><%= @spot.likes.count %></span>
+    <% end %>
+  </div>
+
+  <div class='comment'>
+    <p class='comment-heading'>コメント</p>
+    <div class='comment-item'>
+      <% @comments.each do |comment| %>
+        ・<%= comment.content %>
+        (<%= comment.user.name %>さん)<br>
+      <% end %>
+    </div>
+
+    <div class='comment-form'>
+      <% if user_signed_in? %>
+        <%= form_with model: [@spot, @comment], local: true do |f| %>
+          <div class='form-content'>
+            <%= f.text_area :content %>
+          </div>
+
+          <%= f.hidden_field :post_id, value: @spot.id %><br>
+
+          <div class='form-btn'>
+            <%= f.submit 'コメントする' %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class='linkbox'>
+  <%= link_to 'スポットを検索する', '/' %>
+</div>
+<div class='linkbox'>
+  <% if user_signed_in? %>
+    <%= link_to 'スポットを投稿する', '/spots/new' %>
   <% end %>
-<% end %>
-
-<br><%= link_to 'スポットを検索する', '/' %>
-<br><%= link_to 'スポットを投稿する', '/spots/new' %>
+</div>
