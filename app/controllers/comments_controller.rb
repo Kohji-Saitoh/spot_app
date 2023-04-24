@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create, :destroy]
 
   def create
     @comment = current_user.comments.new(comment_params)
@@ -8,6 +8,12 @@ class CommentsController < ApplicationController
     else
       redirect_back(fallback_location: root_path)  #同上
     end
+  end
+
+  def destroy
+    @comment = current_user.comments.find_by(spot_id: params[:spot_id])
+    @comment.destroy
+    redirect_back(fallback_location: root_path )
   end
 
   private

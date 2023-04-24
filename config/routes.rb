@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   end
 
   resources :spots do               #こちらの２行を追加
-    resource :comments, only: [:create]
+    resource :comments, only: [:create, :destroy]
   end
 end

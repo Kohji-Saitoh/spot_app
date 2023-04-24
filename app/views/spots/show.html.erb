@@ -41,7 +41,11 @@
     <div class='comment-item'>
       <% @comments.each do |comment| %>
         ・<%= comment.content %>
-        (<%= comment.user.name %>さん)<br>
+        (<%= comment.user.name %>さん)
+        <% if comment.user_id == current_user.id %>
+          <%= link_to "削除", spot_comments_path(@spot, comment), method: :delete %>
+        <% end %>
+      <br>
       <% end %>
     </div>
 
