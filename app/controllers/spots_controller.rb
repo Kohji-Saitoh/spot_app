@@ -1,30 +1,30 @@
 class SpotsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :show]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :search
 
   def search
-      # params[:q]のqには検索フォームに入力した値が入る
-      @q = Spot.ransack(params[:q])
-      @q.combinator = 'or'
+    # params[:q]のqには検索フォームに入力した値が入る
+    @q = Spot.ransack(params[:q])
+    @q.combinator = 'or'
   end
 
   def index
-      # distinct: trueは重複したデータを除外
-      @spots = @q.result(distinct: true)
+    # distinct: trueは重複したデータを除外
+    @spots = @q.result(distinct: true)
   end
   
   def new
-      @spot = Spot.new
+    @spot = Spot.new
   end
     
   def create
-      @spot = Spot.new(spots_params)
-      if @spot.save
-          flash[:notice] = 'スポット登録が完了しました'
-          redirect_to "/spots/#{@spot.id}"
-      else
-          render('spots/new')
-      end
+    @spot = Spot.new(spots_params)
+    if @spot.save
+        flash[:notice] = 'スポット登録が完了しました'
+        redirect_to "/spots/#{@spot.id}"
+    else
+        render('spots/new')
+    end
   end
 
   def destroy
@@ -38,6 +38,20 @@ class SpotsController < ApplicationController
     @comments = @spot.comments
     if user_signed_in?
       @comment = current_user.comments.new
+    end
+  end
+
+  def edit
+    @spot = Spot.find_by(id: params[:id])
+  end
+
+  def update
+    @spot = Spot.find_by(id: params[:id])
+    if @spot.update(spots_params)
+      flash[:notice] = 'スポット編集が完了しました'
+      redirect_to "/spots/#{@spot.id}"
+    else
+      render('spots/edit')
     end
   end
 

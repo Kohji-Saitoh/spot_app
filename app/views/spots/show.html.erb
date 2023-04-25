@@ -37,7 +37,9 @@
   </div>
 
   <div class='spot-delete'>
-    <%= link_to '削除', "/spots/#{@spot.id}", method: :delete %>
+    <% if user_signed_in? && @spot.user_id == current_user.id %>
+      <%= link_to '削除', "/spots/#{@spot.id}", method: :delete %>
+    <% end %>
   </div>
 
   <div class='comment'>
@@ -46,9 +48,11 @@
       <% @comments.each do |comment| %>
         ・<%= comment.content %>
         (<%= comment.user.name %>さん)
-        <% if comment.user_id == current_user.id %>
-          <%= link_to '削除', spot_comments_path(@spot), method: :delete %>
-        <% end %>
+        <div class='link-box'>
+          <% if user_signed_in? && comment.user_id == current_user.id %>
+            <%= link_to '削除', spot_comments_path(@spot), method: :delete %>
+          <% end %>
+        </div>
       <br>
       <% end %>
     </div>
@@ -72,6 +76,11 @@
 </div>
 <br>
 
+<div class='linkbox'>
+  <% if user_signed_in? && @spot.user_id == current_user.id %>
+    <%= link_to 'スポットを編集する', "/spots/#{@spot.id}/edit" %>
+  <% end %>
+</div>
 <div class='linkbox'>
   <%= link_to 'スポットを検索する', '/' %>
 </div>

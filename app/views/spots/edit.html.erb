@@ -1,0 +1,40 @@
+<div class='main spots-edit'>
+  <div class='container'>
+    <% if @spot.user_id == current_user.id %>
+      <h1 class='form-heading'>編集する</h1>
+      <%= form_with model: @spot, local: true do |f| %>
+        <div class='form'>
+          <div class='form-content'>
+            <%= f.label :'スポット：' %>
+            <%= f.text_field :name, placeholder: 'キーワードを入力してください' %><br>
+          </div>
+
+          <div class='form-content'>
+            <%= f.label :'テキスト：' %>
+            <%= f.text_field :content, placeholder: 'キーワードを入力してください' %><br>
+          </div>
+
+          <div class='form-pulldown'>
+            <%= f.label :region_id, '都道府県：' %>
+            <%= f.collection_select :region_id, Region.all, :id, :name %><br>
+          </div>
+
+          <div class='form-image'>
+            <%= f.label :'写真：' %>
+            <%= f.file_field :image %>
+            <%= f.hidden_field :image_cache %><br>
+          </div>
+
+          <div class='form-btn'>
+            <%= f.submit '編集' %>
+          </div>
+        </div>
+      <% end %>
+      <div class='linkbox'>
+        <br><%= link_to 'スポットを検索する', '/' %>
+      </div>
+    <% else %>
+      <p>投稿したユーザーのみが編集できます。</p>
+    <% end %>
+  </div>
+</div>
