@@ -27,6 +27,12 @@ class SpotsController < ApplicationController
       end
   end
 
+  def destroy
+    @spot = current_user.spots.find_by(id: params[:id])
+    @spot.destroy
+    redirect_to "/"
+  end
+
   def show
     @spot = Spot.find_by(id: params[:id])
     @comments = @spot.comments

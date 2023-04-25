@@ -36,6 +36,10 @@
     <% end %>
   </div>
 
+  <div class='spot-delete'>
+    <%= link_to '削除', "/spots/#{@spot.id}", method: :delete %>
+  </div>
+
   <div class='comment'>
     <p class='comment-heading'>コメント</p>
     <div class='comment-item'>
