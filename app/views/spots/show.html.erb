@@ -43,7 +43,7 @@
         ・<%= comment.content %>
         (<%= comment.user.name %>さん)
         <% if comment.user_id == current_user.id %>
-          <%= link_to "削除", spot_comments_path(@spot, comment), method: :delete %>
+          <%= link_to '削除', spot_comments_path(@spot), method: :delete %>
         <% end %>
       <br>
       <% end %>
