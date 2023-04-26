@@ -1,0 +1,83 @@
+<h1 class='form-heading'>マイページ</h1>
+  <a href='#spot-create'>投稿したスポット</a>
+  <br>
+  <a href='#spot-like'>いいねしたスポット</a>
+  <br><br>
+
+<div class='spots'>
+  <a id='spot-create'>＜投稿したスポット＞</a>
+  <% @spots_create.each do |spot| %>
+    <div class='spot-create'>
+      <div class='spot-name'>
+        <%= link_to spot.name, "/spots/#{spot.id}" %>
+      </div>
+
+      <div class='spot-region'>
+        <%= spot.region.name %>
+      </div>
+      
+      <div class='spot-content'>
+        <%= spot.content %>
+      </div>
+
+      <div class='like-btn'>
+        <% if user_signed_in? %>
+          <% if current_user.liked?(spot) %>
+            <%= link_to spot_likes_path(spot), method: :delete do %>
+              <span class="fa fa-heart liked-btn"></span>
+              <span class="like__count"><%= spot.likes.count %></span>
+            <% end %>
+          <% else %>
+            <%= link_to spot_likes_path(spot), method: :post do %>
+              <span class="fa fa-heart-o unliked-btn"></span>
+              <span class="like__count"><%= spot.likes.count %></span>
+            <% end %>
+          <% end %>
+        <% else %>
+          <span class="fa fa-heart-o liked-btn"></span>
+          <span class="like__count"><%= spot.likes.count %></span>
+        <% end %>
+        <br><br>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class='spots'>
+  <a id='spot-like'>＜いいねしたスポット＞</a>
+  <% @spots_like.each do |spot| %>
+    <div class='spot-like'>
+      <div class='spot-name'>
+        <%= link_to spot.name, "/spots/#{spot.id}" %>
+      </div>
+
+      <div class='spot-region'>
+        <%= spot.region.name %>
+      </div>
+      
+      <div class='spot-content'>
+        <%= spot.content %>
+      </div>
+
+      <div class='like-btn'>
+        <% if user_signed_in? %>
+          <% if current_user.liked?(spot) %>
+            <%= link_to spot_likes_path(spot), method: :delete do %>
+              <span class="fa fa-heart liked-btn"></span>
+              <span class="like__count"><%= spot.likes.count %></span>
+            <% end %>
+          <% else %>
+            <%= link_to spot_likes_path(spot), method: :post do %>
+              <span class="fa fa-heart-o unliked-btn"></span>
+              <span class="like__count"><%= spot.likes.count %></span>
+            <% end %>
+          <% end %>
+        <% else %>
+          <span class="fa fa-heart-o liked-btn"></span>
+          <span class="like__count"><%= spot.likes.count %></span>
+        <% end %>
+        <br><br>
+      </div>
+    </div>
+  <% end %>
+</div>

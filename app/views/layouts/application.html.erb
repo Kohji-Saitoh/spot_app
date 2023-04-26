@@ -17,10 +17,15 @@
       </div>
 
       <div class='header-menu'>
-        <%- if current_user %>
+        <%- if user_signed_in? %>
           <div class='header-content'>
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %><br />
           </div>
+          
+          <div class='header-content'>
+            <%= link_to 'マイページ', "/users/#{current_user.id}" %><br />
+          </div>
+
 
         <%- else %>
           <div class='header-content'>
