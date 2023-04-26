@@ -8,15 +8,16 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   resources :spots
+
   root 'spots#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
   get  '/users' => redirect('/')
 
-  resources :spots do               #こちらの２行を追加
+  resources :spots do
     resource :likes, only: [:create, :destroy]
   end
 
-  resources :spots do               #こちらの２行を追加
+  resources :spots do
     resource :comments, only: [:create, :destroy]
   end
 end
