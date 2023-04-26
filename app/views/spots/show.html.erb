@@ -81,9 +81,11 @@
     <%= link_to 'スポットを編集する', "/spots/#{@spot.id}/edit" %>
   <% end %>
 </div>
+
 <div class='linkbox'>
   <%= link_to 'スポットを検索する', '/' %>
 </div>
+
 <div class='linkbox'>
   <% if user_signed_in? %>
     <%= link_to 'スポットを投稿する', '/spots/new' %>
