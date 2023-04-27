@@ -1,9 +1,12 @@
 <h1 class='form-heading'>マイページ</h1>
   <a href='#spot-create'>投稿したスポット</a><br>
-  <a href='#spot-like'>いいねしたスポット</a><br><br><br>
+  <a href='#spot-like'>いいねしたスポット</a><br><br>
+  <div class='update-account'>
+    <%= link_to 'アカウント編集', '/users/edit' %>
+  </div><br>
   <div class='delete-account'>
     <%= link_to 'アカウント削除', user_registration_path, method: :delete, data: { confirm: "アカウントを削除してもよろしいですか？" } %>
-  </div><br><br>
+  </div><br>
 
 <div class='spots'>
   <a id='spot-create'>＜投稿したスポット＞</a>
