@@ -33,6 +33,7 @@ ja:
               blank: は登録済みです。
             password:
               blank: は6 文字以上にしてください。
+              too_short: は6 文字以上にしてください。
     models:
       user: ユーザー
   devise:
