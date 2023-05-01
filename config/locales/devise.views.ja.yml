@@ -37,7 +37,7 @@ ja:
               taken: は使用されています。
             password:
               blank: を入力してください。
-              too_short: は6 文字以上にしてください。
+              too_short: は6文字以上にしてください。
             password_confirmation:
               confirmation: が一致していません。
             current_password:
@@ -157,5 +157,5 @@ ja:
       not_found: は見つかりませんでした。
       not_locked: はロックされていません。
       not_saved:
-        one: エラーが発生したため %{resource} は保存されませんでした。
-        other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+        one: エラーが発生したため%{resource}は保存されませんでした。
+        other: "%{count}件のエラーが発生したため%{resource}は保存されませんでした。"
