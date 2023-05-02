@@ -11,8 +11,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = current_user.comments.find_by(spot_id: params[:spot_id])
-    @comment.destroy
+    Comment.find_by(id: params[:id]).destroy
     redirect_back(fallback_location: root_path )
   end
 

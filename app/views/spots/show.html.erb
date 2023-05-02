@@ -44,18 +44,17 @@
 
   <div class='comment'>
     <p class='comment-heading'>コメント</p>
-    <div class='comment-item'>
+    <ul class='list-unstyled'>
       <% @comments.each do |comment| %>
-        ・<%= comment.content %>
-        (<%= comment.user.name %>さん)
-        <div class='link-box'>
+        <li>
+          ・<%= comment.content %>
+          (<%= comment.user.name %>さん)
           <% if user_signed_in? && comment.user_id == current_user.id %>
-            <%= link_to '削除', spot_comments_path(@spot), method: :delete %>
+            <%= link_to '削除', comment_path(comment.id), method: :delete %>
           <% end %>
-        </div>
-      <br>
+        </li>
       <% end %>
-    </div>
+    </ul>
 
     <div class='comment-form'>
       <% if user_signed_in? %>

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   end
 
   resources :spots do
-    resource :comments, only: [:create, :destroy]
+    resource :comments, only: [:create]
   end
+
+  resources :comments, only: [:destroy]
 end
