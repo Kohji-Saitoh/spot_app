@@ -27,19 +27,8 @@
   <% if @q.conditions.present? && @spots.present? %>
     <br>
     <% @spots.each do |spot| %>
-      <div class='spot-name'>
-        <%= link_to spot.name, "/spots/#{spot.id}" %>
-      </div>
-
-      <div class='spot-region'>
-        <%= spot.region.name %>
-      </div>
-      
-      <div class='spot-content'>
-        <%= spot.content %>
-      </div>
-
-      <div class='like-btn'>
+      <div class='spot'>
+        <%= link_to spot.name, "/spots/#{spot.id}" %>（<%= spot.region.name %>）
         <% if user_signed_in? %>
           <% if current_user.liked?(spot) %>
             <%= link_to spot_likes_path(spot), method: :delete do %>
@@ -56,7 +45,10 @@
           <span class="fa fa-heart-o liked-btn"></span>
           <span class="like__count"><%= spot.likes.count %></span>
         <% end %>
-        <br><br>
+      </div>
+
+      <div class='spot-content'>
+        <%= spot.content %>
       </div>
     <% end %>
     <br>

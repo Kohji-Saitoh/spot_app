@@ -1,22 +1,14 @@
 <div class='spot'>
+  <div class='spot-name'>
+    <h1><%= @spot.name %>（<%= @spot.region.name %>）</h1>
+  </div><br>
+
   <div class='spot-image'>
     <% unless @spot.image.url == nil %>
       <%= image_tag @spot.image.thumb.url %><br>
     <% end %>
-  </div>
-
-  <div class='spot-name'>
-    <%= @spot.name %>
-  </div>
-
-  <div class='spot-region'>
-    <%= @spot.region.name %>
-  </div>
-
-  <div class='spot-content'>
-    <%= @spot.content %>
-  </div>
-
+  </div><br>
+ 
   <div class='like-btn'>
     <% if user_signed_in? %>
       <% if current_user.liked?(@spot) %>
@@ -36,11 +28,16 @@
     <% end %>
   </div>
 
-  <div class='spot-delete'>
-    <% if user_signed_in? && @spot.user_id == current_user.id %>
-      <%= link_to '削除', "/spots/#{@spot.id}", method: :delete %>
-    <% end %>
+  <div class='spot-content'>
+    <p><%= @spot.content %></p>
   </div>
+
+  <ul class='list-unstyled'>
+    <% if user_signed_in? && @spot.user_id == current_user.id %>
+      <li><%= link_to '編集', "/spots/#{@spot.id}/edit" %></li>
+      <li><%= link_to '削除', "/spots/#{@spot.id}", method: :delete, data: {confirm: "スポットを削除してもよろしいですか？"} %></li>
+    <% end %>
+  </ul>
 
   <div class='comment'>
     <p class='comment-heading'>コメント</p>
@@ -72,21 +69,11 @@
       <% end %>
     </div>
   </div>
-</div>
-<br>
-
-<div class='linkbox'>
-  <% if user_signed_in? && @spot.user_id == current_user.id %>
-    <%= link_to 'スポットを編集する', "/spots/#{@spot.id}/edit" %>
-  <% end %>
 </div><br>
 
-<div class='linkbox'>
-  <%= link_to 'スポットを検索する', '/' %>
-</div>
-
-<div class='linkbox'>
+<ul class='list-unstyled'>
+  <li><%= link_to 'スポットを検索する', '/' %></li>
   <% if user_signed_in? %>
-    <%= link_to 'スポットを投稿する', '/spots/new' %>
+    <li><%= link_to 'スポットを投稿する', '/spots/new' %></li>
   <% end %>
-</div>
+</ul>
