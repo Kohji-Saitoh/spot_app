@@ -9,14 +9,17 @@
   </div><br>
 
 <div class='spots'>
-  <a id='spot-create'>・投稿したスポット</a>
+  <a id='spot-create'>投稿したスポット</a>
   <% if @spots_create.empty? %>
-    <p class='spots-empty'>スポットを投稿していません</p>
+    <div class='bg-danger bg-opacity-10 border rounded shadow mb-3'>
+      <p class='spots-empty'>スポットを投稿していません</p>
+    </div>
   <% else %>
     <% @spots_create.each do |spot| %>
       <div class='spot-create'>
-        <div class='spot'>
+        <div class='bg-danger bg-opacity-10 border rounded shadow mb-3'>
           <%= link_to spot.name, "/spots/#{spot.id}" %>（<%= spot.region.name %>）
+
           <% if user_signed_in? %>
             <% if current_user.liked?(spot) %>
               <%= link_to spot_likes_path(spot), method: :delete do %>
@@ -32,25 +35,25 @@
           <% else %>
             <span class="fa fa-heart-o liked-btn"></span>
             <span class="like__count"><%= spot.likes.count %></span>
-          <% end %>
-        </div>
-        
-        <div class='spot-content'>
+          <% end %><br>
+
           <%= spot.content %>
-        </div><br>
+        </div>
       </div>
     <% end %>
   <% end %>
 </div>
 
 <div class='spots'>
-  <a id='spot-like'>・いいねしたスポット</a>
+  <a id='spot-like'>いいねしたスポット</a>
   <% if @spots_like.empty? %>
-    <p class='spots-empty'>スポットをいいねしていません</p>
+    <div class='bg-danger bg-opacity-10 border rounded shadow mb-3'>
+      <p class='spots-empty'>スポットをいいねしていません</p>
+    </div>
   <% else %>
     <% @spots_like.each do |spot| %>
       <div class='spot-like'>
-        <div class='spot'>
+        <div class='bg-danger bg-opacity-10 border rounded shadow mb-3'>
           <%= link_to spot.name, "/spots/#{spot.id}" %>（<%= spot.region.name %>）
           <% if user_signed_in? %>
             <% if current_user.liked?(spot) %>
@@ -67,15 +70,13 @@
           <% else %>
             <span class="fa fa-heart-o liked-btn"></span>
             <span class="like__count"><%= spot.likes.count %></span>
-          <% end %>
+          <% end %><br>
 
-        <div class='spot-content'>
           <%= spot.content %>
-        </div><br>
       </div>
     <% end %>
   <% end %>
-</div>
+</div><br>
 
 <ul class='list-unstyled'>
   <li><%= link_to 'スポットを検索する', '/' %></li>
