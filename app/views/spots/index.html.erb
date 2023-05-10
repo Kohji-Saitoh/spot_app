@@ -27,7 +27,7 @@
   <% if @q.conditions.present? && @spots.present? %>
     <br>
     <% @spots.each do |spot| %>
-      <div class='bg-danger bg-opacity-10 border rounded shadow mb-3'>
+      <div class='bg-light border rounded shadow mb-3'>
         <%= link_to spot.name, "/spots/#{spot.id}" %>（<%= spot.region.name %>）
         <% if user_signed_in? %>
           <% if current_user.liked?(spot) %>
@@ -51,7 +51,9 @@
     <% end %>
     <br>
   <%else %>
-    <p class='no-result'>検索結果はありません</p>
+    <div class='bg-light border rounded shadow mb-3'>
+      <p class='no-result'>検索結果はありません</p>
+    </div>
   <% end %>
 </div>
 
