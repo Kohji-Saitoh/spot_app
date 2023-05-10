@@ -1,4 +1,4 @@
-<h1 class='form-heading'>マイページ</h1>
+<h1 class='fw-bold'>マイページ</h1>
   <a href='#spot-create'>投稿したスポット</a><br>
   <a href='#spot-like'>いいねしたスポット</a><br><br>
   <div class='update-account'>
@@ -9,7 +9,7 @@
   </div><br>
 
 <div class='spots'>
-  <a id='spot-create'>投稿したスポット</a>
+  <a id='spot-create'><h5 class='fw-bold'>投稿したスポット</h5></a>
   <% if @spots_create.empty? %>
     <div class='bg-light border rounded shadow mb-3'>
       <p class='spots-empty'>スポットを投稿していません</p>
@@ -42,10 +42,10 @@
       </div>
     <% end %>
   <% end %>
-</div>
+</div><br>
 
 <div class='spots'>
-  <a id='spot-like'>いいねしたスポット</a>
+  <a id='spot-like'><h5 class='fw-bold'>いいねしたスポット</h5></a>
   <% if @spots_like.empty? %>
     <div class='bg-light border rounded shadow mb-3'>
       <p class='spots-empty'>スポットをいいねしていません</p>

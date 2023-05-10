@@ -1,6 +1,6 @@
 <div class='spot'>
   <div class='spot-name'>
-    <h1><%= @spot.name %>（<%= @spot.region.name %>）</h1>
+    <h1 class='fw-bold'><%= @spot.name %>（<%= @spot.region.name %>）</h1>
   </div><br>
 
   <div class='spot-image'>
@@ -40,7 +40,7 @@
   </ul>
 
   <div class='comment'>
-    <p class='comment-heading'>コメント</p>
+    <h5 class='fw-bold'>コメント</h5>
     <ul class='list-unstyled'>
       <% @comments.each do |comment| %>
         <li>

@@ -1,7 +1,7 @@
 <div class='main spots-edit'>
   <div class='container'>
     <% if @spot.user_id == current_user.id %>
-      <h1 class='form-heading'>編集する</h1>
+      <h1 class='fw-bold'>編集する</h1>
       <%= form_with model: @spot, local: true do |f| %>
         <div class='form'>
           <div class='form-content'>
