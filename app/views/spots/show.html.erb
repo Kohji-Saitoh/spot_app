@@ -69,11 +69,11 @@
       <% end %>
     </div>
   </div>
-</div><br>
+</div>
 
-<ul class='list-unstyled'>
-  <li><%= link_to 'スポットを検索する', '/' %></li>
+<div class='linkbox'><br><br>
+  <%= link_to 'スポットを検索する', '/' %><br>
   <% if user_signed_in? %>
-    <li><%= link_to 'スポットを投稿する', '/spots/new' %></li>
+    <%= link_to 'スポットを投稿する', '/spots/new' %>
   <% end %>
-</ul>
+</div>
