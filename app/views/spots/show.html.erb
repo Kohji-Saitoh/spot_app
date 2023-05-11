@@ -1,4 +1,4 @@
-<div class='spot'>
+<div class='bg-light border rounded shadow p-4'>
   <div class='spot-name'>
     <h1 class='fw-bold'><%= @spot.name %>（<%= @spot.region.name %>）</h1>
   </div><br>
@@ -64,7 +64,7 @@
 
           <div class='form-btn'>
             <%= f.submit 'コメントする' %>
-          </div>
+          </div><br>
         <% end %>
       <% end %>
     </div>

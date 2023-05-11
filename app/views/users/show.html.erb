@@ -11,13 +11,13 @@
 <div class='spots'>
   <div id='spot-create' class='pt-5'><h5 class='fw-bold'>投稿したスポット</h5>
     <% if @spots_create.empty? %>
-      <div class='bg-light border rounded shadow mb-3'>
+      <div class='mb-1'>
         <p class='spots-empty'>スポットを投稿していません</p>
       </div>
     <% else %>
       <% @spots_create.each do |spot| %>
         <div class='spot-create'>
-          <div class='bg-light border rounded shadow mb-3'>
+          <div class='bg-light border rounded shadow mb-4 p-2'>
             <%= link_to spot.name, "/spots/#{spot.id}" %>（<%= spot.region.name %>）
 
             <% if user_signed_in? %>
@@ -46,13 +46,13 @@
 
   <div id='spot-like' class='py-5'><h5 class='fw-bold'>いいねしたスポット</h5>
     <% if @spots_like.empty? %>
-      <div class='bg-light border rounded shadow mb-3'>
+      <div class='mb-1'>
         <p class='spots-empty'>スポットをいいねしていません</p>
       </div>
     <% else %>
       <% @spots_like.each do |spot| %>
         <div class='spot-like'>
-          <div class='bg-light border rounded shadow mb-3'>
+          <div class='bg-light border rounded shadow mb-4 p-2'>
             <%= link_to spot.name, "/spots/#{spot.id}" %>（<%= spot.region.name %>）
             <% if user_signed_in? %>
               <% if current_user.liked?(spot) %>
