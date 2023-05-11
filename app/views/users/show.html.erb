@@ -1,4 +1,4 @@
-<h2 class='fw-bold'>マイページ</h2>
+<h2 class='fw-bold'>マイページ</h2><br><br>
   <a href='#spot-create'>投稿したスポット</a><br>
   <a href='#spot-like'>いいねしたスポット</a><br><br>
   <div class='update-account'>
@@ -9,76 +9,76 @@
   </div><br>
 
 <div class='spots'>
-  <a id='spot-create'><h5 class='fw-bold'>投稿したスポット</h5></a>
-  <% if @spots_create.empty? %>
-    <div class='bg-light border rounded shadow mb-3'>
-      <p class='spots-empty'>スポットを投稿していません</p>
-    </div>
-  <% else %>
-    <% @spots_create.each do |spot| %>
-      <div class='spot-create'>
-        <div class='bg-light border rounded shadow mb-3'>
-          <%= link_to spot.name, "/spots/#{spot.id}" %>（<%= spot.region.name %>）
+  <div id='spot-create' class='pt-5'><h5 class='fw-bold'>投稿したスポット</h5>
+    <% if @spots_create.empty? %>
+      <div class='bg-light border rounded shadow mb-3'>
+        <p class='spots-empty'>スポットを投稿していません</p>
+      </div>
+    <% else %>
+      <% @spots_create.each do |spot| %>
+        <div class='spot-create'>
+          <div class='bg-light border rounded shadow mb-3'>
+            <%= link_to spot.name, "/spots/#{spot.id}" %>（<%= spot.region.name %>）
 
-          <% if user_signed_in? %>
-            <% if current_user.liked?(spot) %>
-              <%= link_to spot_likes_path(spot), method: :delete do %>
-                <span class="fa fa-heart liked-btn"></span>
-                <span class="like__count"><%= spot.likes.count %></span>
+            <% if user_signed_in? %>
+              <% if current_user.liked?(spot) %>
+                <%= link_to spot_likes_path(spot), method: :delete do %>
+                  <span class="fa fa-heart liked-btn"></span>
+                  <span class="like__count"><%= spot.likes.count %></span>
+                <% end %>
+              <% else %>
+                <%= link_to spot_likes_path(spot), method: :post do %>
+                  <span class="fa fa-heart-o unliked-btn"></span>
+                  <span class="like__count"><%= spot.likes.count %></span>
+                <% end %>
               <% end %>
             <% else %>
-              <%= link_to spot_likes_path(spot), method: :post do %>
-                <span class="fa fa-heart-o unliked-btn"></span>
-                <span class="like__count"><%= spot.likes.count %></span>
-              <% end %>
-            <% end %>
-          <% else %>
-            <span class="fa fa-heart-o liked-btn"></span>
-            <span class="like__count"><%= spot.likes.count %></span>
-          <% end %><br>
+              <span class="fa fa-heart-o liked-btn"></span>
+              <span class="like__count"><%= spot.likes.count %></span>
+            <% end %><br>
 
-          <%= spot.content %>
+            <%= spot.content %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div><br>
+  </div><br>
 
-<div class='spots'>
-  <a id='spot-like'><h5 class='fw-bold'>いいねしたスポット</h5></a>
-  <% if @spots_like.empty? %>
-    <div class='bg-light border rounded shadow mb-3'>
-      <p class='spots-empty'>スポットをいいねしていません</p>
-    </div>
-  <% else %>
-    <% @spots_like.each do |spot| %>
-      <div class='spot-like'>
-        <div class='bg-light border rounded shadow mb-3'>
-          <%= link_to spot.name, "/spots/#{spot.id}" %>（<%= spot.region.name %>）
-          <% if user_signed_in? %>
-            <% if current_user.liked?(spot) %>
-              <%= link_to spot_likes_path(spot), method: :delete do %>
-                <span class="fa fa-heart liked-btn"></span>
-                <span class="like__count"><%= spot.likes.count %></span>
+  <div id='spot-like' class='py-5'><h5 class='fw-bold'>いいねしたスポット</h5>
+    <% if @spots_like.empty? %>
+      <div class='bg-light border rounded shadow mb-3'>
+        <p class='spots-empty'>スポットをいいねしていません</p>
+      </div>
+    <% else %>
+      <% @spots_like.each do |spot| %>
+        <div class='spot-like'>
+          <div class='bg-light border rounded shadow mb-3'>
+            <%= link_to spot.name, "/spots/#{spot.id}" %>（<%= spot.region.name %>）
+            <% if user_signed_in? %>
+              <% if current_user.liked?(spot) %>
+                <%= link_to spot_likes_path(spot), method: :delete do %>
+                  <span class="fa fa-heart liked-btn"></span>
+                  <span class="like__count"><%= spot.likes.count %></span>
+                <% end %>
+              <% else %>
+                <%= link_to spot_likes_path(spot), method: :post do %>
+                  <span class="fa fa-heart-o unliked-btn"></span>
+                  <span class="like__count"><%= spot.likes.count %></span>
+                <% end %>
               <% end %>
             <% else %>
-              <%= link_to spot_likes_path(spot), method: :post do %>
-                <span class="fa fa-heart-o unliked-btn"></span>
-                <span class="like__count"><%= spot.likes.count %></span>
-              <% end %>
-            <% end %>
-          <% else %>
-            <span class="fa fa-heart-o liked-btn"></span>
-            <span class="like__count"><%= spot.likes.count %></span>
-          <% end %><br>
+              <span class="fa fa-heart-o liked-btn"></span>
+              <span class="like__count"><%= spot.likes.count %></span>
+            <% end %><br>
 
-          <%= spot.content %>
-      </div>
+            <%= spot.content %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div><br>
+  </div>
+</div>
 
-<div class='list-unstyled'>
+<div class='py-5'>
   <%= link_to 'スポットを検索する', '/' %><br>
   <%= link_to 'スポットを投稿する', '/spots/new' %>
 </div>

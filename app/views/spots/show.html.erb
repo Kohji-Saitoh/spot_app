@@ -30,14 +30,14 @@
 
   <div class='spot-content'>
     <p><%= @spot.content %></p>
-  </div>
+  </div><br>
 
   <ul class='list-unstyled'>
     <% if user_signed_in? && @spot.user_id == current_user.id %>
       <li><%= link_to '編集', "/spots/#{@spot.id}/edit" %></li>
       <li><%= link_to '削除', "/spots/#{@spot.id}", method: :delete, data: {confirm: "スポットを削除してもよろしいですか？"} %></li>
     <% end %>
-  </ul>
+  </ul><br>
 
   <div class='comment'>
     <h5 class='fw-bold'>コメント</h5>
@@ -71,7 +71,7 @@
   </div>
 </div>
 
-<div class='linkbox'><br><br>
+<div class='py-5'>
   <%= link_to 'スポットを検索する', '/' %><br>
   <% if user_signed_in? %>
     <%= link_to 'スポットを投稿する', '/spots/new' %>

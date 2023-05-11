@@ -50,14 +50,12 @@
       </div>
     <% end %>
   <%else %>
-    <div class='bg-light border rounded shadow my-3'>
-      <p class='no-result'>検索結果はありません</p>
-    </div>
+    <h4 class='no-result fw-bold'><br>検索結果はありません</h4>
   <% end %>
 </div>
 
-<div class='linkbox'>
+<div class='py-5'>
   <%if user_signed_in? %>
-    <br><%= link_to 'スポットを投稿する', '/spots/new' %>
+    <%= link_to 'スポットを投稿する', '/spots/new' %>
   <% end %>
 </div>

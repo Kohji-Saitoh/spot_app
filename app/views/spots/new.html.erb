@@ -1,5 +1,4 @@
 <div class='main spots-new'>
-  <div class='container'>
     <h1 class='fw-bold'>投稿する</h1>
     <%= form_with model: @spot, local: true do |f| %>
       <div class='form'>
@@ -29,8 +28,7 @@
         </div>
       </div>
     <% end %>
-    <div class='linkbox'>
-      <br><%= link_to 'スポットを検索する', '/' %>
+    <div class='py-5'>
+      <%= link_to 'スポットを検索する', '/' %>
     </div>
-  </div>
 </div>
