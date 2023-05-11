@@ -13,22 +13,21 @@
   </head>
 
   <body>
-    <div class='bg-secondary bg-opacity-10 fullheight'>
+    <div class='bg-danger bg-opacity-10 fullheight'>
       <header class='sticky-top'>
-        <div class='d-flex bg-light border rounded shadow mb-3'>
+        <div class='header-inner d-flex border rounded shadow mb-3'>
           <div class='my-2 me-2 ms-5 py-3'>
             <%= link_to('トップページ', '/') %>
           </div>
 
           <%- if user_signed_in? %>
             <div class='m-2 py-3'>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %><br />
-            </div>
-            
-            <div class='m-2 py-3'>
               <%= link_to 'マイページ', "/users/#{current_user.id}" %><br />
             </div>
 
+            <div class='m-2 py-3'>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %><br />
+            </div>
 
           <%- else %>
             <div class='m-2 py-3'>
