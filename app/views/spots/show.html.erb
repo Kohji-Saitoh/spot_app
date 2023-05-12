@@ -41,16 +41,20 @@
   </ul><br>
 
   <div class='comment'>
-    <h5 class='fw-bold'>コメント</h5>
+    <h4 class='fw-bold'>コメント</h4>
     <div class='my-3'>
-      <% @comments.each do |comment| %>
-        <div class='my-2'>
-        ・<%= comment.content %>
-          (<%= comment.user.name %>さん)
-          <% if user_signed_in? && comment.user_id == current_user.id %>
-            <%= link_to '削除', comment_path(comment.id), method: :delete %><br>
-          <% end %>
-        </div>
+      <% if @comments.empty? %>
+        <h6 class='fw-bold'><br>コメントはありません</h6>
+      <% else %>
+        <% @comments.each do |comment| %>
+          <div class='my-2'>
+          ・<%= comment.content %>
+            (<%= comment.user.name %>さん)
+            <% if user_signed_in? && comment.user_id == current_user.id %>
+              <%= link_to '削除', comment_path(comment.id), method: :delete %><br>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
     </div>
 
