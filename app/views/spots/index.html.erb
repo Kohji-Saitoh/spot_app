@@ -1,33 +1,33 @@
-<h1 class='fw-bold'>検索する</h1>
+<h1 class='fw-bold mb-4'>検索する</h1>
   <div class='form'>
     <%= search_form_for @q do |f| %>
-      <div class='form-content'>
-        <%= f.label :'スポット：' %>
-        <%= f.search_field :name_cont, placeholder: 'キーワードを入力してください' %>
-        <%= f.submit '検索' %>
+      <div class='row gx-2 mb-4'>
+        <label class='col-md-1 col-form-label text-md-end'><%= f.label :'スポット名' %></label>
+        <%= f.search_field :name_cont, placeholder: 'スポット名を入力してください', class:'form-control- col-md-6' %>
+        <%= f.submit '検索', class:'form-control- col-md-1' %>
         <br>
       </div>
 
-      <div class='form-content'>
-        <%= f.label :'テキスト：' %>
-        <%= f.search_field :content_cont, placeholder: 'キーワードを入力してください' %>
-        <%= f.submit '検索' %>
+      <div class='row gx-2 mb-4'>
+        <label class='col-md-1 col-form-label text-md-end'><%= f.label :'スポット詳細' %></label>
+        <%= f.search_field :content_cont, placeholder: 'キーワードを入力してください', class:'form-control- col-md-6' %>
+        <%= f.submit '検索', class:'form-control- col-md-1' %>
         <br>
       </div>
 
-      <div class='form-pulldown'>
-        <%= f.label :region_id, '都道府県：' %>
-        <%= f.collection_select :region_id_eq, Region.all, :id, :name %>
-        <%= f.submit '検索' %>
+      <div class='row gx-2 mb-4'>
+        <label class='col-md-1 col-form-label text-md-end'><%= f.label :region_id, '都道府県' %></label>
+        <%= f.collection_select :region_id_eq, Region.all, :id, :name, { prompt: '選択してください' }, autocomplete: 'region_id', class:'form-select- col-md-3' %>
+        <%= f.submit '検索', class:'form-control- col-md-1' %>
       </div>
     <% end %>
   </div>
  
-<div class='spots'>
+<div class='row my-5'>
   <% if @q.conditions.present? && @spots.present? %>
     <br>
     <% @spots.each do |spot| %>
-      <div class='bg-light border rounded shadow mb-4 p-2'>
+      <div class='col-md-8 bg-light border rounded shadow mb-4 p-2'>
         <%= link_to spot.name, "/spots/#{spot.id}" %>（<%= spot.region.name %>）
         <% if user_signed_in? %>
           <% if current_user.liked?(spot) %>

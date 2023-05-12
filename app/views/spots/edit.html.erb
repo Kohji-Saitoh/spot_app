@@ -1,31 +1,37 @@
 <div class='main spots-edit'>
   <% if @spot.user_id == current_user.id %>
-    <h1 class='fw-bold'>編集する</h1>
+    <h1 class='fw-bold mb-4'>編集する</h1>
     <%= form_with model: @spot, local: true do |f| %>
       <div class='form'>
-        <div class='form-content'>
-          <%= f.label :'スポット：' %>
-          <%= f.text_field :name, placeholder: 'キーワードを入力してください' %><br>
+        <div class='row gx-2 mb-4'>
+          <label class='col-md-1 col-form-label text-md-end'><%= f.label :'スポット名' %></label>
+          <div class='col-md-7'>
+            <input type='text' class='form-control' name='spot[name]' id='spot_name' value='<%= @spot.name %>'>
+          </div>
         </div>
 
-        <div class='form-content'>
-          <%= f.label :'テキスト：' %>
-          <%= f.text_field :content, placeholder: 'キーワードを入力してください' %><br>
+        <div class='row gx-2 mb-4'>
+          <label class='col-md-1 col-form-label text-md-end'><%= f.label :'スポット詳細' %></label>
+          <div class='col-md-7'>
+            <textarea rows='10' class='form-control' name='spot[content]' id='spot_content'><%= @spot.content %></textarea>
+          </div>
         </div>
 
-        <div class='form-pulldown'>
-          <%= f.label :region_id, '都道府県：' %>
-          <%= f.collection_select :region_id, Region.all, :id, :name %><br>
+        <div class='row gx-2 mb-4'>
+          <label class='col-md-1 col-form-label text-md-end'><%= f.label :region_id, '都道府県' %></label>
+          <%= f.collection_select :region_id, Region.all, :id, :name, { prompt: '選択してください' }, autocomplete: 'region_id', class:'form-select- col-md-3' %>
         </div>
 
-        <div class='form-image'>
-          <%= f.label :'写真：' %>
-          <%= f.file_field :image %>
+        <div class='row gx-2 mb-4'>
+          <label class='col-md-1 col-form-label text-md-end'><%= f.label :'写真' %></label>
+          <%= f.file_field :image, class:'form-control- col-md-7' %>
           <%= f.hidden_field :image_cache %><br>
         </div>
 
-        <div class='form-btn'>
-          <%= f.submit '編集' %>
+        <div class='row gx-2 mb-4'>
+          <div class='col-8 text-end'>
+            <%= f.submit '編集' %>
+          </div>
         </div>
       </div>
     <% end %>
