@@ -1,4 +1,4 @@
-<h2 class='fw-bold'>マイページ</h2><br><br>
+<h1 class='fw-bold'>マイページ</h1><br><br>
   <a href='#spot-create'>投稿したスポット</a><br>
   <a href='#spot-like'>いいねしたスポット</a><br><br><br>
   <div class='update-account'>
@@ -8,8 +8,8 @@
     <%= link_to 'アカウント削除', user_registration_path, method: :delete, data: { confirm: "アカウントを削除してもよろしいですか？" } %>
   </div><br>
 
-<div class='spots'>
-  <div id='spot-create' class='pt-5'><h5 class='fw-bold'>投稿したスポット</h5>
+<div class='row'>
+  <div id='spot-create' class='pt-5 col-md-8'><h5 class='fw-bold'>投稿したスポット</h5>
     <% if @spots_create.empty? %>
       <div class='mb-1'>
         <p class='spots-empty'>スポットを投稿していません</p>
@@ -44,7 +44,7 @@
     <% end %>
   </div><br>
 
-  <div id='spot-like' class='py-5'><h5 class='fw-bold'>いいねしたスポット</h5>
+  <div id='spot-like' class='py-5 col-md-8'><h5 class='fw-bold'>いいねしたスポット</h5>
     <% if @spots_like.empty? %>
       <div class='mb-1'>
         <p class='spots-empty'>スポットをいいねしていません</p>
@@ -76,7 +76,7 @@
       <% end %>
     <% end %>
   </div>
-</div>
+</div><br><br>
 
 <div class='py-5'>
   <%= link_to 'スポットを検索する', '/' %><br>
