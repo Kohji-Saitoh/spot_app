@@ -17,28 +17,28 @@
       <header class='sticky-top'>
         <div class='header-inner d-flex border rounded shadow mb-3'>
           <div class='my-2 me-2 ms-5 py-3'>
-            <%= link_to('トップページ', '/') %>
+            <%= link_to 'トップページ', '/', class: 'btn btn-secondary shadow' %>
           </div>
 
           <%- if user_signed_in? %>
             <div class='m-2 py-3'>
-              <%= link_to 'マイページ', "/users/#{current_user.id}" %><br />
+              <%= link_to 'マイページ', "/users/#{current_user.id}", class: 'btn btn-secondary shadow' %><br />
             </div>
 
             <div class='m-2 py-3'>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %><br />
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-secondary shadow' %><br />
             </div>
 
           <%- else %>
             <div class='m-2 py-3'>
               <%- if controller_name != 'sessions' %>
-                <%= link_to 'ログイン', new_session_path(resource_name) %><br />
+                <%= link_to 'ログイン', new_session_path(resource_name), class: 'btn btn-secondary shadow' %><br />
               <% end %>
             </div>
 
             <div class='m-2 py-3'>
               <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-                  <%= link_to 'アカウント登録', new_registration_path(resource_name) %><br />
+                  <%= link_to 'アカウント登録', new_registration_path(resource_name), class: 'btn btn-secondary shadow' %><br />
               <% end %>
             </div>
           <%- end %>

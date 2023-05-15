@@ -1,11 +1,11 @@
 <h1 class='fw-bold'>マイページ</h1><br><br>
-  <a href='#spot-create'>投稿したスポット</a><br>
-  <a href='#spot-like'>いいねしたスポット</a><br><br><br>
+  <a href='#spot-create' class='btn btn-secondary mb-2 shadow'>投稿したスポット</a><br>
+  <a href='#spot-like' class='btn btn-secondary mb-5 shadow'>いいねしたスポット</a>
   <div class='update-account'>
-    <%= link_to 'アカウント編集', '/users/edit' %>
+    <%= link_to 'アカウント編集', '/users/edit', class: 'btn btn-secondary mb-2 shadow' %>
   </div>
   <div class='delete-account'>
-    <%= link_to 'アカウント削除', user_registration_path, method: :delete, data: { confirm: "アカウントを削除してもよろしいですか？" } %>
+    <%= link_to 'アカウント削除', user_registration_path, method: :delete, data: { confirm: "アカウントを削除してもよろしいですか？" }, class: 'btn btn-danger shadow' %>
   </div><br>
 
 <div class='row'>
@@ -18,7 +18,7 @@
       <% @spots_create.each do |spot| %>
         <div class='spot-create'>
           <div class='bg-light border rounded shadow mb-4 p-2'>
-            <%= link_to spot.name, "/spots/#{spot.id}" %>（<%= spot.region.name %>）
+            <%= link_to spot.name, "/spots/#{spot.id}", class: 'btn btn-secondary shadow' %>（<%= spot.region.name %>）
 
             <% if user_signed_in? %>
               <% if current_user.liked?(spot) %>
@@ -36,8 +36,10 @@
               <span class="fa fa-heart-o liked-btn"></span>
               <span class="like__count"><%= spot.likes.count %></span>
             <% end %><br>
-
-            <%= spot.content %>
+            
+            <div class='mt-3'>
+              <%= spot.content %>
+            </div>
           </div>
         </div>
       <% end %>
@@ -53,7 +55,7 @@
       <% @spots_like.each do |spot| %>
         <div class='spot-like'>
           <div class='bg-light border rounded shadow mb-4 p-2'>
-            <%= link_to spot.name, "/spots/#{spot.id}" %>（<%= spot.region.name %>）
+            <%= link_to spot.name, "/spots/#{spot.id}", class: 'btn btn-secondary shadow' %>（<%= spot.region.name %>）
             <% if user_signed_in? %>
               <% if current_user.liked?(spot) %>
                 <%= link_to spot_likes_path(spot), method: :delete do %>
@@ -71,7 +73,9 @@
               <span class="like__count"><%= spot.likes.count %></span>
             <% end %><br>
 
-            <%= spot.content %>
+            <div class='mt-3'>
+              <%= spot.content %>
+            </div>
         </div>
       <% end %>
     <% end %>
@@ -79,6 +83,6 @@
 </div><br><br>
 
 <div class='py-5'>
-  <%= link_to 'スポットを検索する', '/' %><br>
-  <%= link_to 'スポットを投稿する', '/spots/new' %>
+  <%= link_to 'スポット検索', '/', class: 'btn btn-secondary mb-2 shadow' %><br>
+  <%= link_to 'スポット投稿', '/spots/new', class: 'btn btn-secondary shadow' %>
 </div>

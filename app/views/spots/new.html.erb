@@ -5,36 +5,37 @@
         <div class='row gx-2 mb-4'>
           <label class='col-md-1 col-form-label text-md-end'><%= f.label :'スポット名' %></label>
           <div class='col-md-7'>
-            <input type='text' class='form-control' name='spot[name]' id='spot_name'>
+            <input type='text' class='form-control shadow' name='spot[name]' id='spot_name'>
           </div>
         </div>
 
         <div class='row gx-2 mb-4'>
           <label class='col-md-1 col-form-label text-md-end'><%= f.label :'スポット詳細' %></label>
           <div class='col-md-7'>
-            <textarea rows='10' class='form-control' name='spot[content]' id='spot_content'></textarea>
+            <textarea rows='10' class='form-control shadow' name='spot[content]' id='spot_content'></textarea>
           </div>
         </div>
 
         <div class='row gx-2 mb-4'>
           <label class='col-md-1 col-form-label text-md-end'><%= f.label :region_id, '都道府県' %></label>
-          <%= f.collection_select :region_id, Region.all, :id, :name, { prompt: '選択してください' }, autocomplete: 'region_id', class:'form-select- col-md-3' %>
+          <%= f.collection_select :region_id, Region.all, :id, :name, { prompt: '選択してください' }, autocomplete: 'region_id', class:'form-select- col-md-3 btn btn-secondary shadow' %>
         </div>
 
         <div class='row gx-2 mb-4'>
           <label class='col-md-1 col-form-label text-md-end'><%= f.label :'写真' %></label>
-          <%= f.file_field :image, class:'form-control- col-md-7' %>
+          <%= f.label :image, 'ファイルを選択してください', class:'form-select- col-md-3 btn btn-secondary shadow' %>
+          <%= f.file_field :image, style: 'display: none;' %>
           <%= f.hidden_field :image_cache %><br>
         </div>
 
         <div class='row gx-2 mb-4'>
           <div class='col-8 text-end'>
-            <%= f.submit '投稿' %>
+            <%= f.submit '投稿', class: 'btn btn-primary shadow' %>
           </div>
         </div>
       </div>
     <% end %>
     <div class='py-5'>
-      <%= link_to 'スポットを検索する', '/' %>
+      <%= link_to 'スポットを検索する', '/', class: 'btn btn-secondary shadow' %>
     </div>
 </div>

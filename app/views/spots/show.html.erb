@@ -29,16 +29,16 @@
     <% end %>
   </div>
 
-  <div class='spot-content'>
+  <div class='mb-5'>
     <p><%= @spot.content %></p>
-  </div><br>
+  </div>
 
-  <ul class='list-unstyled'>
+  <div class='mb-5'>
     <% if user_signed_in? && @spot.user_id == current_user.id %>
-      <li><%= link_to '編集', "/spots/#{@spot.id}/edit" %></li>
-      <li><%= link_to '削除', "/spots/#{@spot.id}", method: :delete, data: {confirm: "スポットを削除してもよろしいですか？"} %></li>
+      <%= link_to 'スポット編集', "/spots/#{@spot.id}/edit", class: 'btn btn-secondary mb-2 shadow' %><br>
+      <%= link_to 'スポット削除', "/spots/#{@spot.id}", method: :delete, data: {confirm: "スポットを削除してもよろしいですか？"}, class: 'btn btn-danger shadow' %>
     <% end %>
-  </ul><br>
+  </div>
 
   <div class='comment'>
     <h4 class='fw-bold'>コメント</h4>
@@ -51,7 +51,7 @@
           ・<%= comment.content %>
             (<%= comment.user.name %>さん)
             <% if user_signed_in? && comment.user_id == current_user.id %>
-              <%= link_to '削除', comment_path(comment.id), method: :delete %><br>
+              <%= link_to '削除', comment_path(comment.id), method: :delete, class: 'btn btn-danger btn-sm shadow' %><br>
             <% end %>
           </div>
         <% end %>
@@ -62,14 +62,14 @@
       <% if user_signed_in? %>
         <%= form_with model: [@spot, @comment], local: true do |f| %>
           <div class='comment-new'>
-            <textarea rows='10' class='form-control mb-3' name='comment[content]' id='comment_content'></textarea>
+            <textarea rows='10' class='form-control mb-3 shadow' name='comment[content]' id='comment_content'></textarea>
           </div>
 
           <%= f.hidden_field :post_id, value: @spot.id %>
 
           <div class='row gx-2'>
             <div class='col-12 text-end'>
-              <%= f.submit 'コメントする' %>
+              <%= f.submit 'コメントする', class: 'btn btn-primary shadow' %>
             </div>
           </div>
         <% end %>
@@ -80,8 +80,8 @@
 </div>
 
 <div class='py-5'>
-  <%= link_to 'スポットを検索する', '/' %><br>
+  <%= link_to 'スポット検索', '/', class: 'btn btn-secondary mb-2 shadow' %><br>
   <% if user_signed_in? %>
-    <%= link_to 'スポットを投稿する', '/spots/new' %>
+    <%= link_to 'スポット投稿', '/spots/new', class: 'btn btn-secondary shadow' %>
   <% end %>
 </div>
