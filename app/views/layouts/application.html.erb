@@ -30,9 +30,9 @@
             </div>
 
           <%- else %>
-            <div class='m-2 py-3'>
+            <div class='py-3'>
               <%- if controller_name != 'sessions' %>
-                <%= link_to 'ログイン', new_session_path(resource_name), class: 'btn btn-secondary px-3 shadow' %><br />
+                <%= link_to 'ログイン', new_session_path(resource_name), class: 'btn btn-secondary m-2 px-3 shadow' %><br />
               <% end %>
             </div>
 
