@@ -1,10 +1,10 @@
 <div class='row'>
 <div class='bg-light border rounded shadow p-4 col-md-8'>
-  <div class='spot-name'>
+  <div class='spot-name my-3'>
     <h1 class='fw-bold'><%= @spot.name %>（<%= @spot.region.name %>）</h1>
   </div><br>
 
-  <div class='spot-image'>
+  <div class='spot-image mb-3'>
     <% unless @spot.image.url == nil %>
       <%= image_tag @spot.image.thumb.url %><br>
     <% end %>
@@ -14,18 +14,24 @@
     <% if user_signed_in? %>
       <% if current_user.liked?(@spot) %>
         <%= link_to spot_likes_path(@spot), method: :delete do %>
-          <span class="fa fa-heart liked-btn"></span>
-          <span class="like__count"><%= @spot.likes.count %></span>
+          <div class='btn btn-light btn-lg text-danger mb-4'>
+            <span class="fa fa-heart liked-btn"></span>
+            <span class="like__count"><%= @spot.likes.count %></span>
+          </div>
         <% end %>
       <% else %>
         <%= link_to spot_likes_path(@spot), method: :post do %>
-          <span class="fa fa-heart-o unliked-btn"></span>
-          <span class="like__count"><%= @spot.likes.count %></span>
+          <div class='btn btn-light btn-lg text-danger mb-4'>
+            <span class="fa fa-heart-o unliked-btn"></span>
+            <span class="like__count"><%= @spot.likes.count %></span>
+          </div>
         <% end %>
       <% end %>
     <% else %>
-      <span class="fa fa-heart-o liked-btn"></span>
-      <span class="like__count"><%= @spot.likes.count %></span>
+      <div class='btn btn-light btn-lg text-danger mb-4'>
+        <span class="fa fa-heart-o liked-btn"></span>
+        <span class="like__count"><%= @spot.likes.count %></span>
+      </div>
     <% end %>
   </div>
 
@@ -35,8 +41,8 @@
 
   <div class='mb-5'>
     <% if user_signed_in? && @spot.user_id == current_user.id %>
-      <%= link_to 'スポット編集', "/spots/#{@spot.id}/edit", class: 'btn btn-secondary mb-2 shadow' %><br>
-      <%= link_to 'スポット削除', "/spots/#{@spot.id}", method: :delete, data: {confirm: "スポットを削除してもよろしいですか？"}, class: 'btn btn-danger shadow' %>
+      <%= link_to 'スポット編集', "/spots/#{@spot.id}/edit", class: 'btn btn-secondary px-3 mb-2 shadow' %><br>
+      <%= link_to 'スポット削除', "/spots/#{@spot.id}", method: :delete, data: {confirm: "スポットを削除してもよろしいですか？"}, class: 'btn btn-danger px-3 shadow' %>
     <% end %>
   </div>
 
@@ -51,14 +57,14 @@
           ・<%= comment.content %>
             (<%= comment.user.name %>さん)
             <% if user_signed_in? && comment.user_id == current_user.id %>
-              <%= link_to '削除', comment_path(comment.id), method: :delete, class: 'btn btn-danger btn-sm shadow' %><br>
+              <%= link_to '削除', comment_path(comment.id), method: :delete, class: 'btn btn-danger btn-sm px-3 ms-2 shadow' %><br>
             <% end %>
           </div>
         <% end %>
       <% end %>
     </div>
 
-    <div class='row gx-2 mb-2'>
+    <div class='row gx-2 mb-3'>
       <% if user_signed_in? %>
         <%= form_with model: [@spot, @comment], local: true do |f| %>
           <div class='comment-new'>
@@ -69,7 +75,7 @@
 
           <div class='row gx-2'>
             <div class='col-12 text-end'>
-              <%= f.submit 'コメントする', class: 'btn btn-primary shadow' %>
+              <%= f.submit 'コメントする', class: 'btn btn-primary px-3 shadow' %>
             </div>
           </div>
         <% end %>
@@ -80,8 +86,8 @@
 </div>
 
 <div class='py-5'>
-  <%= link_to 'スポット検索', '/', class: 'btn btn-secondary mb-2 shadow' %><br>
+  <%= link_to 'スポット検索', '/', class: 'btn btn-secondary px-3 mb-2 shadow' %><br>
   <% if user_signed_in? %>
-    <%= link_to 'スポット投稿', '/spots/new', class: 'btn btn-secondary shadow' %>
+    <%= link_to 'スポット投稿', '/spots/new', class: 'btn btn-secondary px-3 shadow' %>
   <% end %>
 </div>
