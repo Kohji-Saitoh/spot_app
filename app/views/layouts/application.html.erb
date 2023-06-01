@@ -67,9 +67,9 @@
       <main class='mx-5'>
         <div class='greeting'>
           <% if current_user.present? %>
-            <h4><br><br>こんにちは、<%= current_user.name %>さん！</h4>
+            <h4 class='mt-5 pt-3'>こんにちは、<%= current_user.name %>さん！</h4>
           <% else %>
-            <h4><br><br>こんにちは、ゲストさん！</h4>
+            <h4 class='mt-5 pt-3'>こんにちは、ゲストさん！</h4>
           <% end %>
         </div>
         <p class="notice"><%= notice %></p>
