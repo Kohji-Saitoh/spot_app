@@ -1,88 +1,88 @@
 <div class='row'>
-<div class='bg-light border rounded shadow p-4 col-md-8'>
-  <div class='spot-name my-3'>
-    <h1 class='fw-bold'><%= @spot.name %>（<%= @spot.region.name %>）</h1>
-  </div><br>
+  <div class='bg-light border rounded shadow p-4 col-md-8'>
+    <div class='spot-name my-3'>
+      <h1 class='fw-bold'><%= @spot.name %>（<%= @spot.region.name %>）</h1>
+    </div><br>
 
-  <div class='spot-image mb-3'>
-    <% unless @spot.image.url == nil %>
-      <%= image_tag @spot.image.thumb.url %><br>
-    <% end %>
-  </div><br>
- 
-  <div class='like-btn'>
-    <% if user_signed_in? %>
-      <% if current_user.liked?(@spot) %>
-        <%= link_to spot_likes_path(@spot), method: :delete do %>
-          <div class='btn btn-light btn-lg text-danger mb-4'>
-            <span class="fa fa-heart"></span>
-            <span class="like__count"><%= @spot.likes.count %></span>
-          </div>
-        <% end %>
-      <% else %>
-        <%= link_to spot_likes_path(@spot), method: :post do %>
-          <div class='btn btn-light btn-lg text-danger mb-4'>
-            <span class="fa fa-heart-o"></span>
-            <span class="like__count"><%= @spot.likes.count %></span>
-          </div>
-        <% end %>
+    <div class='spot-image mb-3'>
+      <% unless @spot.image.url == nil %>
+        <%= image_tag @spot.image.thumb.url %><br>
       <% end %>
-    <% else %>
-      <div class='btn btn-light btn-lg text-danger mb-4'>
-        <span class="fa fa-heart-o"></span>
-        <span class="like__count"><%= @spot.likes.count %></span>
-      </div>
-    <% end %>
-  </div>
-
-  <div class='mb-5'>
-    <p><%= @spot.content %></p>
-  </div>
-
-  <div class='mb-5'>
-    <% if user_signed_in? && @spot.user_id == current_user.id %>
-      <%= link_to 'スポット編集', "/spots/#{@spot.id}/edit", class: 'btn btn-secondary px-3 mb-2 shadow' %><br>
-      <%= link_to 'スポット削除', "/spots/#{@spot.id}", method: :delete, data: {confirm: "スポットを削除してもよろしいですか？"}, class: 'btn btn-danger px-3 shadow' %>
-    <% end %>
-  </div>
-
-  <div class='comment'>
-    <h4 class='fw-bold'>コメント</h4>
-    <div class='my-3'>
-      <% if @comments.empty? %>
-        <h6 class='fw-bold'><br>コメントはありません</h6>
-      <% else %>
-        <% @comments.each do |comment| %>
-          <div class='my-2'>
-          ・<%= comment.content %>
-            (<%= comment.user.name %>さん)
-            <% if user_signed_in? && comment.user_id == current_user.id %>
-              <%= link_to '削除', comment_path(comment.id), method: :delete, class: 'btn btn-danger btn-sm px-3 ms-2 shadow' %><br>
-            <% end %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-
-    <div class='row gx-2 mb-3'>
+    </div><br>
+  
+    <div class='like-btn'>
       <% if user_signed_in? %>
-        <%= form_with model: [@spot, @comment], local: true do |f| %>
-          <div class='comment-new'>
-            <textarea rows='10' class='form-control mb-3 shadow' name='comment[content]' id='comment_content'></textarea>
-          </div>
-
-          <%= f.hidden_field :post_id, value: @spot.id %>
-
-          <div class='row gx-2'>
-            <div class='col-12 text-end'>
-              <%= f.submit 'コメントする', class: 'btn btn-primary px-3 shadow' %>
+        <% if current_user.liked?(@spot) %>
+          <%= link_to spot_likes_path(@spot), method: :delete do %>
+            <div class='btn btn-light btn-lg text-danger mb-4'>
+              <span class="fa fa-heart"></span>
+              <span class="like__count"><%= @spot.likes.count %></span>
             </div>
-          </div>
+          <% end %>
+        <% else %>
+          <%= link_to spot_likes_path(@spot), method: :post do %>
+            <div class='btn btn-light btn-lg text-danger mb-4'>
+              <span class="fa fa-heart-o"></span>
+              <span class="like__count"><%= @spot.likes.count %></span>
+            </div>
+          <% end %>
         <% end %>
+      <% else %>
+        <div class='btn btn-light btn-lg text-danger mb-4'>
+          <span class="fa fa-heart-o"></span>
+          <span class="like__count"><%= @spot.likes.count %></span>
+        </div>
       <% end %>
     </div>
+
+    <div class='mb-5'>
+      <p><%= @spot.content %></p>
+    </div>
+
+    <div class='mb-5'>
+      <% if user_signed_in? && @spot.user_id == current_user.id %>
+        <%= link_to 'スポット編集', "/spots/#{@spot.id}/edit", class: 'btn btn-secondary px-3 mb-2 shadow' %><br>
+        <%= link_to 'スポット削除', "/spots/#{@spot.id}", method: :delete, data: {confirm: "スポットを削除してもよろしいですか？"}, class: 'btn btn-danger px-3 shadow' %>
+      <% end %>
+    </div>
+
+    <div class='comment'>
+      <h4 class='fw-bold'>コメント</h4>
+      <div class='my-3'>
+        <% if @comments.empty? %>
+          <h6 class='fw-bold'><br>コメントはありません</h6>
+        <% else %>
+          <% @comments.each do |comment| %>
+            <div class='my-2'>
+            ・<%= comment.content %>
+              (<%= comment.user.name %>さん)
+              <% if user_signed_in? && comment.user_id == current_user.id %>
+                <%= link_to '削除', comment_path(comment.id), method: :delete, class: 'btn btn-danger btn-sm px-3 ms-2 shadow' %><br>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class='row gx-2 mb-3'>
+        <% if user_signed_in? %>
+          <%= form_with model: [@spot, @comment], local: true do |f| %>
+            <div class='comment-new'>
+              <textarea rows='10' class='form-control mb-3 shadow' name='comment[content]' id='comment_content'></textarea>
+            </div>
+
+            <%= f.hidden_field :post_id, value: @spot.id %>
+
+            <div class='row gx-2'>
+              <div class='col-12 text-end'>
+                <%= f.submit 'コメントする', class: 'btn btn-primary px-3 shadow' %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
 </div>
 
 <div class='py-5'>
