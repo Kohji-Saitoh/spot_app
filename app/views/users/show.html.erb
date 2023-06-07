@@ -1,12 +1,17 @@
 <h1 class='fw-bold'>マイページ</h1><br><br>
+
+<div class='spots-link'>
   <a href='#spot-create' class='btn btn-secondary mb-2 px-3 shadow'>投稿したスポット</a><br>
   <a href='#spot-like' class='btn btn-secondary mb-5 px-3 shadow'>いいねしたスポット</a>
-  <div class='update-account'>
-    <%= link_to 'アカウント編集', '/users/edit', class: 'btn btn-secondary mb-2 px-3 shadow' %>
-  </div>
-  <div class='delete-account'>
-    <%= link_to 'アカウント削除', user_registration_path, method: :delete, data: { confirm: "アカウントを削除してもよろしいですか？" }, class: 'btn btn-danger shadow px-3' %>
-  </div><br>
+</div>
+
+<div class='update-account'>
+  <%= link_to 'アカウント編集', '/users/edit', class: 'btn btn-secondary mb-2 px-3 shadow' %>
+</div>
+
+<div class='delete-account'>
+  <%= link_to 'アカウント削除', user_registration_path, method: :delete, data: { confirm: "アカウントを削除してもよろしいですか？" }, class: 'btn btn-danger shadow px-3' %>
+</div><br>
 
 <div class='row'>
   <div id='spot-create' class='pt-5 col-md-8'><h4 class='mt-3 fw-bold'>投稿したスポット</h4>

@@ -1,27 +1,28 @@
 <h1 class='fw-bold mb-4'>検索する</h1>
-  <div class='form'>
-    <%= search_form_for @q do |f| %>
-      <div class='row gx-2 mb-4'>
-        <label class='col-md-1 col-form-label text-md-end'><%= f.label :'スポット名' %></label>
-        <%= f.search_field :name_cont, placeholder: 'スポット名を入力してください', class:'form-control- col-md-6 shadow' %>
-        <input type="submit" value="&#xf002; 検索" class="fa form-control- col-md-1 btn btn-primary shadow">
-        <br>
-      </div>
 
-      <div class='row gx-2 mb-4'>
-        <label class='col-md-1 col-form-label text-md-end'><%= f.label :'スポット詳細' %></label>
-        <%= f.search_field :content_cont, placeholder: 'キーワードを入力してください', class:'form-control- col-md-6 shadow' %>
-        <input type="submit" value="&#xf002; 検索" class="fa form-control- col-md-1 btn btn-primary shadow">
-        <br>
-      </div>
+<div class='form'>
+  <%= search_form_for @q do |f| %>
+    <div class='row gx-2 mb-4'>
+      <label class='col-md-1 col-form-label text-md-end'><%= f.label :'スポット名' %></label>
+      <%= f.search_field :name_cont, placeholder: 'スポット名を入力してください', class:'form-control- col-md-6 shadow' %>
+      <input type="submit" value="&#xf002; 検索" class="fa form-control- col-md-1 btn btn-primary shadow">
+      <br>
+    </div>
 
-      <div class='row gx-2 mb-4'>
-        <label class='col-md-1 col-form-label text-md-end'><%= f.label :region_id, '都道府県' %></label>
-        <%= f.collection_select :region_id_eq, Region.all, :id, :name, { prompt: '選択してください' }, autocomplete: 'region_id', class:'form-select- col-md-3 btn btn-secondary shadow' %>
-        <input type="submit" value="&#xf002; 検索" class="fa form-control- col-md-1 btn btn-primary shadow">
-      </div>
-    <% end %>
-  </div>
+    <div class='row gx-2 mb-4'>
+      <label class='col-md-1 col-form-label text-md-end'><%= f.label :'スポット詳細' %></label>
+      <%= f.search_field :content_cont, placeholder: 'キーワードを入力してください', class:'form-control- col-md-6 shadow' %>
+      <input type="submit" value="&#xf002; 検索" class="fa form-control- col-md-1 btn btn-primary shadow">
+      <br>
+    </div>
+
+    <div class='row gx-2 mb-4'>
+      <label class='col-md-1 col-form-label text-md-end'><%= f.label :region_id, '都道府県' %></label>
+      <%= f.collection_select :region_id_eq, Region.all, :id, :name, { prompt: '選択してください' }, autocomplete: 'region_id', class:'form-select- col-md-3 btn btn-secondary shadow' %>
+      <input type="submit" value="&#xf002; 検索" class="fa form-control- col-md-1 btn btn-primary shadow">
+    </div>
+  <% end %>
+</div>
  
 <div class='row my-5'>
   <% if @q.conditions.present? && @spots.present? %>
