@@ -1,10 +1,10 @@
 <div class='row'>
   <div class='bg-light border rounded shadow p-4 col-md-8'>
-    <div class='spot-name my-3'>
+    <div class='my-3'>
       <h1 class='fw-bold'><%= @spot.name %>（<%= @spot.region.name %>）</h1>
     </div><br>
 
-    <div class='spot-image mb-3'>
+    <div class='mb-3'>
       <% unless @spot.image.url == nil %>
         <%= image_tag @spot.image.thumb.url %><br>
       <% end %>
