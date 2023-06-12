@@ -46,7 +46,7 @@
       <% end %>
     </div>
 
-    <div class='comment'>
+    <div class='comments'>
       <h4 class='fw-bold'>コメント</h4>
       <div class='my-3'>
         <% if @comments.empty? %>
@@ -63,16 +63,13 @@
           <% end %>
         <% end %>
       </div>
-
       <div class='row gx-2 mb-3'>
         <% if user_signed_in? %>
           <%= form_with model: [@spot, @comment], local: true do |f| %>
-            <div class='comment-new'>
+            <div class='comments-new'>
               <textarea rows='10' class='form-control mb-3 shadow' name='comment[content]' id='comment_content'></textarea>
             </div>
-
             <%= f.hidden_field :post_id, value: @spot.id %>
-
             <div class='row gx-2'>
               <div class='col-12 text-end'>
                 <%= f.submit 'コメントする', class: 'btn btn-primary px-3 shadow' %>
@@ -84,7 +81,6 @@
     </div>
   </div>
 </div>
-
 <div class='py-5'>
   <%= link_to 'スポット検索', '/', class: 'btn btn-secondary px-3 mb-2 shadow' %><br>
   <% if user_signed_in? %>
