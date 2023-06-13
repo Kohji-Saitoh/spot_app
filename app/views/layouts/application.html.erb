@@ -17,7 +17,7 @@
       <header class='sticky-top'>
         <div class='header-inner d-flex border rounded shadow mb-3'>
           <div class='my-2 me-2 ms-5 py-3'>
-            <%= link_to 'トップページ', '/', class: 'btn btn-secondary px-3 shadow' %>
+            <%= link_to 'トップページ', '/', class: 'btn btn-secondary px-3 shadow', data: {"turbolinks" => false} %>
           </div>
 
           <%- if user_signed_in? %>

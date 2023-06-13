@@ -9,3 +9,6 @@ import "../stylesheets/application.scss";
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require("jquery")
+require('test.js')
