@@ -63,7 +63,7 @@
           <% end %>
         <% end %>
       </div>
-      <div class='row gx-2 mb-3'>
+      <div class='row gx-2'>
         <% if user_signed_in? %>
           <%= form_with model: [@spot, @comment], local: true do |f| %>
             <div class='comments-new'>
