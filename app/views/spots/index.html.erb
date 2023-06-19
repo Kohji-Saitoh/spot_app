@@ -15,7 +15,8 @@
 
     <div class='row gx-2 mb-4'>
       <label class='col-md-1 col-form-label text-md-end'><%= f.label :region_id, '都道府県' %></label>
-      <%= f.collection_select :region_id_eq, Region.all, :id, :name, { prompt: '選択してください' }, autocomplete: 'region_id', class:'form-select- col-md-3 btn btn-secondary shadow' %>
+      <%= f.collection_select :region_id_eq, Region.all, :id, :name, { prompt: '選択してください' }, 
+      autocomplete: 'region_id', class:'form-select- col-md-3 btn btn-secondary shadow' %>
       <input type="submit" value="&#xf002; 検索" class="fa form-control- col-md-1 btn btn-primary shadow">
     </div>
   <% end %>
@@ -24,17 +25,18 @@
   <% if @q.conditions.present? && @spots.present? %><br>
     <% @spots.each do |spot| %>
       <div class='col-md-8 bg-light border rounded shadow mb-4 ms-2 p-2'>
-        <%= link_to spot.name + '（' + spot.region.name + '）', "/spots/#{spot.id}", class: 'btn btn-secondary shadow ps-3' %>
         <% if user_signed_in? %>
           <% if current_user.liked?(spot) %>
-            <%= link_to spot_likes_path(spot), method: :delete do %>
+            <%= button_to spot_likes_path(spot), class:'like-btn bg-light border-0', method: :delete do %>
+              <%= link_to spot.name + '（' + spot.region.name + '）', "/spots/#{spot.id}", class: 'btn btn-secondary shadow ps-3' %>
               <div class='btn btn-light btn-lg text-danger ms-2'>
                 <span class="fa fa-heart"></span>
                 <span class="like__count"><%= spot.likes.count %></span>
               </div>
             <% end %>
           <% else %>
-            <%= link_to spot_likes_path(spot), method: :post do %>
+            <%= button_to spot_likes_path(spot), class:'like-btn bg-light border-0', method: :post do %>
+              <%= link_to spot.name + '（' + spot.region.name + '）', "/spots/#{spot.id}", class: 'btn btn-secondary shadow ps-3' %>
               <div class='btn btn-light btn-lg text-danger ms-2'>
                 <span class="fa fa-heart-o"></span>
                 <span class="like__count"><%= spot.likes.count %></span>
@@ -42,11 +44,12 @@
             <% end %>
           <% end %>
         <% else %>
+          <%= link_to spot.name + '（' + spot.region.name + '）', "/spots/#{spot.id}", class: 'btn btn-secondary shadow ps-3' %>
           <div class='btn btn-light btn-lg text-danger ms-2'>
             <span class="fa fa-heart-o"></span>
             <span class="like__count"><%= spot.likes.count %></span>
           </div>
-        <% end %><br>
+        <% end %>
         <div class='mt-3'>
           <%= spot.content %>
         </div>

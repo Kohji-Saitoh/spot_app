@@ -12,21 +12,21 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="is-slide" id="page-animate">
+  <body class='is-slide' id='page-animate'>
     <div class='bg-danger bg-opacity-10 fullheight'>
       <header class='sticky-top'>
         <div class='header-inner d-flex border rounded shadow mb-3'>
-          <div class='my-2 me-2 ms-5 py-3'>
+          <div class='mt-2 me-2 ms-5 pt-3'>
             <%= link_to 'トップページ', '/', class: 'btn btn-secondary px-3 shadow', data: {"turbolinks" => false} %>
           </div>
 
           <%- if user_signed_in? %>
-            <div class='m-2 py-3'>
+            <div class='mt-2 mx-2 pt-3'>
               <%= link_to 'マイページ', "/users/#{current_user.id}", class: 'btn btn-secondary px-3 shadow' %><br />
             </div>
 
-            <div class='m-2 py-3'>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-secondary px-3 shadow' %><br />
+            <div class='mt-2 mx-2 pt-3'>
+              <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-secondary px-3 shadow' %><br />
             </div>
 
           <%- else %>
