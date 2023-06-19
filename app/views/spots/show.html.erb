@@ -1,4 +1,4 @@
-<div class='row'>
+<div class='row mb-5'>
   <div class='bg-light border rounded shadow p-4 col-md-8'>
     <div class='mt-2 mb-4'>
       <h1 class='fw-bold'><%= @spot.name %>（<%= @spot.region.name %>）</h1>
@@ -15,22 +15,22 @@
         <% if current_user.liked?(@spot) %>
           <%= button_to spot_likes_path(@spot), class:'like-btn bg-light border-0', method: :delete do %>
             <div class='btn btn-light btn-lg text-danger mb-4'>
-              <span class="fa fa-heart"></span>
-              <span class="like__count"><%= @spot.likes.count %></span>
+              <span class='fa fa-heart'></span>
+              <span class='like__count'><%= @spot.likes.count %></span>
             </div>
           <% end %>
         <% else %>
           <%= button_to spot_likes_path(@spot), class:'like-btn bg-light border-0', method: :post do %>
             <div class='btn btn-light btn-lg text-danger mb-4'>
-              <span class="fa fa-heart-o"></span>
-              <span class="like__count"><%= @spot.likes.count %></span>
+              <span class='fa fa-heart-o'></span>
+              <span class='like__count'><%= @spot.likes.count %></span>
             </div>
           <% end %>
         <% end %>
       <% else %>
         <div class='btn btn-light btn-lg text-danger mb-4'>
-          <span class="fa fa-heart-o"></span>
-          <span class="like__count"><%= @spot.likes.count %></span>
+          <span class='fa fa-heart-o'></span>
+          <span class='like__count'><%= @spot.likes.count %></span>
         </div>
       <% end %>
     </div>
@@ -80,10 +80,4 @@
       </div>
     </div>
   </div>
-</div>
-<div class='py-5'>
-  <%= link_to 'スポット検索', '/', class: 'btn btn-secondary px-3 mb-2 shadow' %><br>
-  <% if user_signed_in? %>
-    <%= link_to 'スポット投稿', '/spots/new', class: 'btn btn-secondary px-3 shadow' %>
-  <% end %>
 </div>

@@ -13,7 +13,7 @@
   </head>
 
   <body class='is-slide' id='page-animate'>
-    <div class='bg-danger bg-opacity-10 fullheight'>
+    <div class='bg-danger bg-opacity-10 fullheight pb-5'>
       <header class='sticky-top'>
         <div class='header-inner d-flex border rounded shadow mb-3'>
           <div class='mt-2 me-2 ms-5 pt-3'>
@@ -21,6 +21,10 @@
           </div>
 
           <%- if user_signed_in? %>
+            <div class='mt-2 mx-2 pt-3'>
+              <%= link_to 'スポット投稿', '/spots/new', class: 'btn btn-secondary px-3 shadow' %><br />
+            </div>
+
             <div class='mt-2 mx-2 pt-3'>
               <%= link_to 'マイページ', "/users/#{current_user.id}", class: 'btn btn-secondary px-3 shadow' %><br />
             </div>
