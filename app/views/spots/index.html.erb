@@ -25,35 +25,35 @@
   <% if @q.conditions.present? && @spots.present? %><br>
     <% @spots.each do |spot| %>
       <div class='col-md-8 bg-light border rounded shadow row mb-4 ms-2 p-2'>
-      <div class='col-md-10'>
-        <% if user_signed_in? %>
-          <% if current_user.liked?(spot) %>
-            <%= button_to spot_likes_path(spot), class:'like-btn bg-light border-0', method: :delete do %>
-              <%= link_to spot.name + '（' + spot.region.name + '）', "/spots/#{spot.id}", class: 'btn btn-secondary shadow ps-3' %>
-              <div class='btn btn-light btn-lg text-danger ms-2'>
-                <span class='fa fa-heart'></span>
-                <span class='like__count'><%= spot.likes.count %></span>
-              </div>
+        <div class='col-md-10'>
+          <% if user_signed_in? %>
+            <% if current_user.liked?(spot) %>
+              <%= button_to spot_likes_path(spot), class:'like-btn bg-light border-0', method: :delete do %>
+                <%= link_to spot.name + '（' + spot.region.name + '）', "/spots/#{spot.id}", class: 'btn btn-secondary shadow ps-3' %>
+                <div class='btn btn-light btn-lg text-danger ms-2'>
+                  <span class='fa fa-heart'></span>
+                  <span class='like__count'><%= spot.likes.count %></span>
+                </div>
+              <% end %>
+            <% else %>
+              <%= button_to spot_likes_path(spot), class:'like-btn bg-light border-0', method: :post do %>
+                <%= link_to spot.name + '（' + spot.region.name + '）', "/spots/#{spot.id}", class: 'btn btn-secondary shadow ps-3' %>
+                <div class='btn btn-light btn-lg text-danger ms-2'>
+                  <span class='fa fa-heart-o'></span>
+                  <span class='like__count'><%= spot.likes.count %></span>
+                </div>
+              <% end %>
             <% end %>
           <% else %>
-            <%= button_to spot_likes_path(spot), class:'like-btn bg-light border-0', method: :post do %>
-              <%= link_to spot.name + '（' + spot.region.name + '）', "/spots/#{spot.id}", class: 'btn btn-secondary shadow ps-3' %>
-              <div class='btn btn-light btn-lg text-danger ms-2'>
-                <span class='fa fa-heart-o'></span>
-                <span class='like__count'><%= spot.likes.count %></span>
-              </div>
-            <% end %>
+            <%= link_to spot.name + '（' + spot.region.name + '）', "/spots/#{spot.id}", class: 'btn btn-secondary shadow ps-3' %>
+            <div class='btn btn-light btn-lg text-danger ms-2'>
+              <span class='fa fa-heart-o'></span>
+              <span class='like__count'><%= spot.likes.count %></span>
+            </div>
           <% end %>
-        <% else %>
-          <%= link_to spot.name + '（' + spot.region.name + '）', "/spots/#{spot.id}", class: 'btn btn-secondary shadow ps-3' %>
-          <div class='btn btn-light btn-lg text-danger ms-2'>
-            <span class='fa fa-heart-o'></span>
-            <span class='like__count'><%= spot.likes.count %></span>
+          <div class='mt-2 mx-2'>
+            <%= spot.content %>
           </div>
-        <% end %>
-        <div class='mt-2 mx-2'>
-          <%= spot.content %>
-        </div>
         </div>
         <div class='col-md-2 d-flex align-items-center'>
           <% if spot.image.url %>

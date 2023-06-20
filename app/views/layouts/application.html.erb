@@ -17,7 +17,7 @@
       <header class='sticky-top'>
         <div class='header-inner border rounded shadow row d-flex align-items-center'>
           <div class='ms-5 col-md-3'>
-            <%= link_to 'アプリ名', '/', class: 'title', data: {"turbolinks" => false} %>
+            <%= link_to 'ダンス大好き！', '/', class: 'title', data: {"turbolinks" => false} %>
           </div>
 
           <div class='d-flex justify-content-end col-md-8'>
@@ -49,9 +49,9 @@
       <main class='mx-5'>
         <div class='greeting'>
           <% if current_user.present? %>
-            <h4 class='mt-5 pt-3'>こんにちは、<%= current_user.name %>さん！</h4>
+            <h4 class='mt-5 pt-3'>こんにちは、<%= current_user.name %>さん！<br>踊れるスポットを検索できるアプリです！</h4>
           <% else %>
-            <h4 class='mt-5 pt-3'>こんにちは、ゲストさん！</h4>
+            <h4 class='mt-5 pt-3'>こんにちは、ゲストさん！<br>踊れるスポットを検索できるアプリです！</h4>
           <% end %>
         </div>
         <p class="notice"><%= notice %></p>
