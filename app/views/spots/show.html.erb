@@ -5,7 +5,7 @@
     </div>
 
     <div class='image'>
-      <% unless @spot.image.url == nil %>
+      <% if @spot.image.url %>
         <%= image_tag @spot.image.thumb.url, class:'mt-2 mb-4' %>
       <% end %>
     </div>

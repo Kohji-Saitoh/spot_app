@@ -24,7 +24,8 @@
 <div class='row mt-5 mb-4'>
   <% if @q.conditions.present? && @spots.present? %><br>
     <% @spots.each do |spot| %>
-      <div class='col-md-8 bg-light border rounded shadow mb-4 ms-2 p-2'>
+      <div class='col-md-8 bg-light border rounded shadow row mb-4 ms-2 p-2'>
+      <div class='col-md-10'>
         <% if user_signed_in? %>
           <% if current_user.liked?(spot) %>
             <%= button_to spot_likes_path(spot), class:'like-btn bg-light border-0', method: :delete do %>
@@ -52,6 +53,12 @@
         <% end %>
         <div class='mt-2 mx-2'>
           <%= spot.content %>
+        </div>
+        </div>
+        <div class='col-md-2 d-flex align-items-center'>
+          <% if spot.image.url %>
+            <%= image_tag spot.image.thumb50.url %>
+          <% end %>
         </div>
       </div>
     <% end %>

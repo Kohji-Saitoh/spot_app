@@ -38,7 +38,7 @@ html{
   min-height: 100Vh;
   scroll-padding-top: 3rem;
 }
-   
+
 body{
   min-height: 100Vh; 
 }
@@ -49,4 +49,14 @@ body{
 
 .header-inner{
   background-color: #F172A3;
+}
+
+.title{
+  color: #FFF;
+  text-decoration: none;
+  font-size: 40px;
+}
+
+.title:hover{
+  color: #6C757D;
 }

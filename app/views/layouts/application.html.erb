@@ -15,37 +15,39 @@
   <body class='is-slide' id='page-animate'>
     <div class='bg-danger bg-opacity-10 fullheight pb-5'>
       <header class='sticky-top'>
-        <div class='header-inner d-flex border rounded shadow mb-3'>
-          <div class='mt-2 me-2 ms-5 pt-3'>
-            <%= link_to 'トップページ', '/', class: 'btn btn-secondary px-3 shadow', data: {"turbolinks" => false} %>
+        <div class='header-inner border rounded shadow row d-flex align-items-center'>
+          <div class='ms-5 col-md-3'>
+            <%= link_to 'アプリ名', '/', class: 'title', data: {"turbolinks" => false} %>
           </div>
 
-          <%- if user_signed_in? %>
-            <div class='mt-2 mx-2 pt-3'>
-              <%= link_to 'スポット投稿', '/spots/new', class: 'btn btn-secondary px-3 shadow' %><br />
-            </div>
+          <div class='d-flex justify-content-end col-md-8'>
+            <%- if user_signed_in? %>
+              <div class='mt-2 me-2 pt-3'>
+                <%= link_to 'スポット投稿', '/spots/new', class: 'btn btn-secondary px-3 shadow' %><br />
+              </div>
 
-            <div class='mt-2 mx-2 pt-3'>
-              <%= link_to 'マイページ', "/users/#{current_user.id}", class: 'btn btn-secondary px-3 shadow' %><br />
-            </div>
+              <div class='mt-2 mx-2 pt-3'>
+                <%= link_to 'マイページ', "/users/#{current_user.id}", class: 'btn btn-secondary px-3 shadow' %><br />
+              </div>
 
-            <div class='mt-2 mx-2 pt-3'>
-              <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-secondary px-3 shadow' %><br />
-            </div>
+              <div class='mt-2 ms-2 pt-3'>
+                <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-secondary px-3 shadow' %><br />
+              </div>
 
-          <%- else %>
-            <div class='py-3'>
-              <%- if controller_name != 'sessions' %>
-                <%= link_to 'ログイン', new_session_path(resource_name), class: 'btn btn-secondary m-2 px-3 shadow' %><br />
-              <% end %>
-            </div>
+            <%- else %>
+              <div class='py-3'>
+                <%- if controller_name != 'sessions' %>
+                  <%= link_to 'ログイン', new_session_path(resource_name), class: 'btn btn-secondary m-2 px-3 shadow' %><br />
+                <% end %>
+              </div>
 
-            <div class='m-2 py-3'>
-              <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-                  <%= link_to 'アカウント登録', new_registration_path(resource_name), class: 'btn btn-secondary px-3 shadow' %><br />
-              <% end %>
-            </div>
-          <%- end %>
+              <div class='m-2 py-3 pe-2'>
+                <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+                    <%= link_to 'アカウント登録', new_registration_path(resource_name), class: 'btn btn-secondary px-3 shadow' %><br />
+                <% end %>
+              </div>
+            <%- end %>
+          </div>
         </div>
       </header>
       <main class='mx-5'>
