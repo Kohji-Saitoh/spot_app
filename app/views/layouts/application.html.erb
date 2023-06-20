@@ -36,15 +36,11 @@
 
             <%- else %>
               <div class='py-3'>
-                <%- if controller_name != 'sessions' %>
-                  <%= link_to 'ログイン', new_session_path(resource_name), class: 'btn btn-secondary m-2 px-3 shadow' %><br />
-                <% end %>
+                <%= link_to 'ログイン', new_session_path(resource_name), class: 'btn btn-secondary m-2 px-3 shadow' %><br />
               </div>
 
-              <div class='m-2 py-3'>
-                <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-                    <%= link_to 'アカウント登録', new_registration_path(resource_name), class: 'btn btn-secondary px-3 shadow' %><br />
-                <% end %>
+              <div class='my-2 ms-2 py-3'>
+                <%= link_to 'アカウント登録', new_registration_path(resource_name), class: 'btn btn-secondary px-3 shadow' %><br />
               </div>
             <%- end %>
           </div>
