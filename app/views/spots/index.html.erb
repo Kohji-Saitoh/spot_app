@@ -58,7 +58,7 @@
             </div>
           <% end %>
           <div class='mt-2 mx-2'>
-            <%= spot.content %>
+            <%= safe_join(spot.content.split("\n"),tag(:br)) %>
           </div>
         </div>
         <div class='col-md-2 d-flex align-items-center'>

@@ -36,7 +36,7 @@
     </div>
 
     <div class='mb-5'>
-      <p><%= @spot.content %></p>
+      <p><%= safe_join(@spot.content.split("\n"),tag(:br)) %></p>
     </div>
 
     <div class='mb-5'>
