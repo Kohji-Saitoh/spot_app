@@ -4,20 +4,26 @@
     <div class='row gx-2 mb-4'>
       <label class='col-md-1 col-form-label text-md-end'><%= f.label :'スポット名' %></label>
       <%= f.search_field :name_cont, placeholder: 'スポット名を入力してください', class:'form-control- col-md-6 shadow' %>
-      <input type="submit" value="&#xf002; 検索" class="fa form-control- col-md-1 btn btn-primary shadow"><br>
+      <button type="submit" class="fa form-control- col-md-1 btn btn-primary shadow">
+        <i class="fa fa-search"></i>&nbsp;検索
+      </button>
     </div>
 
     <div class='row gx-2 mb-4'>
       <label class='col-md-1 col-form-label text-md-end'><%= f.label :'スポット詳細' %></label>
       <%= f.search_field :content_cont, placeholder: 'キーワードを入力してください', class:'form-control- col-md-6 shadow' %>
-      <input type="submit" value="&#xf002; 検索" class="fa form-control- col-md-1 btn btn-primary shadow"><br>
+      <button type="submit" class="fa form-control- col-md-1 btn btn-primary shadow">
+        <i class="fa fa-search"></i>&nbsp;検索
+      </button>
     </div>
 
     <div class='row gx-2 mb-4'>
       <label class='col-md-1 col-form-label text-md-end'><%= f.label :region_id, '都道府県' %></label>
       <%= f.collection_select :region_id_eq, Region.all, :id, :name, { prompt: '選択してください' }, 
       autocomplete: 'region_id', class:'form-select- col-md-3 btn btn-secondary shadow' %>
-      <input type="submit" value="&#xf002; 検索" class="fa form-control- col-md-1 btn btn-primary shadow">
+      <button type="submit" class="fa form-control- col-md-1 btn btn-primary shadow">
+        <i class="fa fa-search"></i>&nbsp;検索
+      </button>
     </div>
   <% end %>
 </div>
