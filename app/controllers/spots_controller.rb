@@ -18,7 +18,7 @@ class SpotsController < ApplicationController
   def create
     @spot = Spot.new(spots_params)
     if @spot.save
-        flash[:notice] = 'スポット登録が完了しました'
+        flash[:notice] = 'スポット登録が完了しました。'
         redirect_to "/spots/#{@spot.id}"
     else
         render('spots/new')
@@ -46,7 +46,7 @@ class SpotsController < ApplicationController
   def update
     @spot = Spot.find_by(id: params[:id])
     if @spot.update(spots_params)
-      flash[:notice] = 'スポット編集が完了しました'
+      flash[:notice] = 'スポット編集が完了しました。'
       redirect_to "/spots/#{@spot.id}"
     else
       render('spots/edit')
