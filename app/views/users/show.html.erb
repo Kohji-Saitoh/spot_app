@@ -1,4 +1,4 @@
-<h1 class='fw-bold mb-4'>マイページ</h1>
+<h1 class='mb-4'>マイページ</h1>
 <div class='spots-link'>
   <a href='#spots-like' class='btn btn-secondary mb-2 px-3 shadow'>いいねしたスポット</a><br>
   <a href='#spots-create' class='btn btn-secondary mb-5 px-3 shadow'>投稿したスポット</a>
@@ -13,7 +13,7 @@
 </div><br>
 
 <div class='row'>
-  <div id='spots-like' class='col-md-8'><h4 class='mt-3 fw-bold'>いいねしたスポット</h4>
+  <div id='spots-like' class='col-md-8'><h4 class='mt-3'>いいねしたスポット</h4>
     <% if @spots_like.empty? %>
       <div class='mb-1'>
         <p class='spots-empty'>スポットをいいねしていません</p>
@@ -41,7 +41,7 @@
   </div>
   <div class=my-5></div>
 
-  <div id='spots-create' class='pb-4 col-md-8'><h4 class='mt-3 fw-bold'>投稿したスポット</h4>
+  <div id='spots-create' class='pb-4 col-md-8'><h4 class='mt-3'>投稿したスポット</h4>
     <% if @spots_create.empty? %>
       <div class='mb-1'>
         <p class='spots-empty'>スポットを投稿していません</p>

@@ -1,7 +1,7 @@
 <div class='row mb-5'>
   <div class='bg-light border rounded shadow p-4 col-md-8'>
     <div class='mt-2 mb-4'>
-      <h1 class='fw-bold'><%= @spot.name %>（<%= @spot.region.name %>）</h1>
+      <h1><%= @spot.name %>（<%= @spot.region.name %>）</h1>
     </div>
 
     <div class='image'>
@@ -47,10 +47,10 @@
     </div>
 
     <div class='comments'>
-      <h4 class='fw-bold'>コメント</h4>
+      <h4>コメント</h4>
       <div class='my-3'>
         <% if @comments.empty? %>
-          <h6 class='fw-bold'><br>コメントはありません</h6>
+          <h6><br>コメントはありません</h6>
         <% else %>
           <% @comments.each do |comment| %>
             <div class='my-2'>
