@@ -1,7 +1,7 @@
 <h1 class='mb-4'>マイページ</h1>
 <div class='spots-link'>
   <a href='#spots-like' class='btn btn-secondary mb-2 px-3 shadow'>いいねしたスポット</a><br>
-  <a href='#spots-create' class='btn btn-secondary mb-5 px-3 shadow'>投稿したスポット</a>
+  <a href='#spots-create' class='btn btn-secondary mb-5 px-3 shadow'>登録したスポット</a>
 </div>
 
 <div class='update-account'>
@@ -41,10 +41,10 @@
   </div>
   <div class=my-5></div>
 
-  <div id='spots-create' class='pb-4 col-md-8'><h4 class='mt-3'>投稿したスポット</h4>
+  <div id='spots-create' class='pb-4 col-md-8'><h4 class='mt-3'>登録したスポット</h4>
     <% if @spots_create.empty? %>
       <div class='mb-1'>
-        <p class='spots-empty'>スポットを投稿していません</p>
+        <p class='spots-empty'>スポットを登録していません</p>
       </div>
     <% else %>
       <% @spots_create.each do |spot| %>
