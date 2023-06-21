@@ -34,29 +34,35 @@
   left: 0;
 }
 
-html{
+html {
   min-height: 100Vh;
   scroll-padding-top: 3rem;
 }
 
-body{
+body {
   min-height: 100Vh; 
 }
 
-.fullheight{
+.fullheight {
   min-height: 100Vh;
 }
 
-.header-inner{
+.header-inner {
   background-color: #F172A3;
 }
 
-.title{
+.title {
   color: #FFF;
   text-decoration: none;
   font-size: 40px;
 }
 
-.title:hover{
+.title:hover {
   color: #6C757D;
+}
+
+.bg {
+  background-image: url(/images/bg_image.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
