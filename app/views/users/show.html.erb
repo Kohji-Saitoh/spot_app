@@ -15,8 +15,8 @@
 <div class='row'>
   <div id='spots-like' class='col-md-8'><h4 class='mt-3'>いいねしたスポット</h4>
     <% if @spots_like.empty? %>
-      <div class='mb-1'>
-        <p class='spots-empty'>スポットをいいねしていません</p>
+      <div class='my-4'>
+        <p class='spots-empty'>スポットをいいねしていません。</p>
       </div>
     <% else %>
       <% @spots_like.each do |spot| %>
@@ -43,8 +43,8 @@
 
   <div id='spots-create' class='pb-4 col-md-8'><h4 class='mt-3'>登録したスポット</h4>
     <% if @spots_create.empty? %>
-      <div class='mb-1'>
-        <p class='spots-empty'>スポットを登録していません</p>
+      <div class='my-4'>
+        <p class='spots-empty'>スポットを登録していません。</p>
       </div>
     <% else %>
       <% @spots_create.each do |spot| %>
