@@ -4,21 +4,21 @@
 spot_app
 
 ## アプリケーション概要
-踊れるスポットを検索できるアプリケーションです。
+踊れるスポットを検索、投稿できるアプリケーションです。
 
 ## アプリケーション作成背景
 趣味でダンスをしていて、踊れる場所を探せるサービスがあれば便利だと思い、このアプリを作成しました。
 
 ## 機能一覧
-・検索機能(ransack)
-・投稿機能
-　・投稿の新規作成、詳細表示、編集、削除
-　・画像投稿(carrierwave, mini_magick)
-・いいね機能
-・コメント機能
-・ユーザー管理機能(devise)
-　・ユーザーの登録、詳細表示、編集、削除
-　・ログイン、ログアウト
+*検索機能(ransack)
+*投稿機能
+ *投稿の新規作成、詳細表示、編集、削除
+ *画像投稿(carrierwave, mini_magick)
+*いいね機能
+*コメント機能
+*ユーザー管理機能(devise)
+ *ユーザーの登録、詳細表示、編集、削除
+ *ログイン、ログアウト
 
 ## データベース設計
 ![サンプル画像](app/assets/images/er.png)
@@ -71,4 +71,4 @@ spot_app
 * belongs_to :spot
 
 ## 開発環境
-Ruby / Ruby on Rails / JavaScript / jQuery / MySQL / Github / Visual Studio Code
+Ruby / Ruby on Rails / JavaScript / jQuery / Bootstrap / MySQL / Github / Visual Studio Code
