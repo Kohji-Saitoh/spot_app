@@ -28,9 +28,9 @@
   <% end %>
 </div>
 <div class='row mt-5 mb-4'>
-  <% if @q.conditions.present? && @spots.present? %><br>
+  <% if @q.conditions.present? && @spots.present? %>
     <% @spots.each do |spot| %>
-      <div class='col-md-8 bg-light border rounded shadow row mb-4 ms-2 p-2'>
+      <div class='col-md-8 bg-light border rounded shadow row mb-4 ms-1 py-2'>
         <div class='col-md-10'>
           <% if user_signed_in? %>
             <% if current_user.liked?(spot) %>
@@ -57,7 +57,7 @@
               <span class='like__count'><%= spot.likes.count %></span>
             </div>
           <% end %>
-          <div class='mt-2 mx-2'>
+          <div class='mt-2 mx-2 mb-1'>
             <%= safe_join(spot.content.split("\n"),tag(:br)) %>
           </div>
         </div>
