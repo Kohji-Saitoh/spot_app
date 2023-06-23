@@ -21,7 +21,7 @@ spot_app
   * ログイン、ログアウト
 
 ## データベース設計
-![サンプル画像](app/assets/images/er.png)
+![サンプル画像](https://gyazo.com/50c3219a00cfe554eedd3021c5300187)
 
 ## テーブル設計
 
@@ -64,6 +64,8 @@ spot_app
 | Colum     | Type    | Options     |
 | --------- | ------- | ----------- |
 | content   | text    | null: false |
+| user_id   | bigint  | null: false |
+| spot_id   | bigint  | null: false |
 
 ### Association
 * belongs_to :user
