@@ -13,7 +13,7 @@ spot_app
 * 検索機能(ransack)
 * 投稿機能
   * 投稿の新規作成、詳細表示、編集、削除
-  * 画像投稿(carrierwave, mini_magick)
+  * 画像投稿(carrierwave、mini_magick)
 * いいね機能
 * コメント機能
 * ユーザー管理機能(devise)
