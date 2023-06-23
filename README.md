@@ -23,6 +23,8 @@ spot_app
 ## データベース設計
 ![サンプル画像](app/assets/images/er.png)
 
+## テーブル設計
+
 ## usersテーブル
 | Colum     | Type    | Options     |
 | --------- | ------- | ----------- |
