@@ -21,7 +21,7 @@ spot_app
   * ログイン、ログアウト
 
 ## データベース設計
-![サンプル画像](https://gyazo.com/50c3219a00cfe554eedd3021c5300187)
+![サンプル画像](app/assets/images/er.png)
 
 ## テーブル設計
 
