@@ -20,6 +20,9 @@ spot_app
   * ユーザーの登録、詳細表示、編集、削除
   * ログイン、ログアウト
 
+## 画面遷移図
+![サンプル画像](app/assets/images/st.png)
+
 ## データベース設計
 ![サンプル画像](app/assets/images/er.png)
 
