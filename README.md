@@ -56,8 +56,8 @@ spot_app
 ## likesテーブル
 | Colum     | Type    | Options     |
 | --------- | ------- | ----------- |
-| user_id   | bigint  | null: false |
-| spot_id   | bigint  | null: false |
+| user_id   | bigint  |             |
+| spot_id   | bigint  |             |
 
 ### Association
 * belongs_to :user
@@ -67,8 +67,8 @@ spot_app
 | Colum     | Type    | Options     |
 | --------- | ------- | ----------- |
 | content   | text    | null: false |
-| user_id   | bigint  | null: false |
-| spot_id   | bigint  | null: false |
+| user_id   | bigint  |             |
+| spot_id   | bigint  |             |
 
 ### Association
 * belongs_to :user
