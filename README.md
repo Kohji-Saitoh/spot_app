@@ -75,4 +75,4 @@ spot_app
 * belongs_to :spot
 
 ## 開発環境
-Ruby / Ruby on Rails / JavaScript / jQuery / Bootstrap / MySQL / Github / Visual Studio Code
+Ruby / Ruby on Rails / JavaScript / jQuery / Bootstrap / MySQL / Github / AWS / Visual Studio Code
